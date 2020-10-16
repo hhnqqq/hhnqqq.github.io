@@ -22,6 +22,24 @@ Computationally-enabled, domain-dependent science centered around data managemen
 数据科学是可计算的领域依赖的以数据管理 分析 产生为中心的科学
 What separates this from definitions of related disciplines, like computer and information science, mathematics, statistics, business analytics, or software engineering
 
+
 数据科学家的要求极高，要精与数据分析和软件工程，要懂得用最好的硬件最好的算法去处理问题
+
 需要有良好的自然科学知识，懂得因为大小，结构，混乱程度而导致的复杂的数据问题
+
 数据科学家需要有混合技能
+
+# 2.数据的来源：
+数据由人类和设备产生
+
+  2.1人类产生的数据：一些人类数据是非常传统的，如社会（调查）数据，也有医学上身体上的数据如心率，一些数据比较新鲜，如社交媒体上的数据（你的每一次点击，在网络上的各种行为）
+  
+  2.2设备产生的数据：前提：传感器变得无处不在。设备产生的数据几乎构成了所有的现代数据，如地震观测数据，当微观到个体时，这种数据缩小到手表等设备产生的数据。
+  
+物联网：
+
+
+
+
+做数据分析一定要小心，考虑周到，使用合适的参考
+数据科学项目生命周期：data acquisition-data preparation-hypothesis and modling-evaluation and interpretation-deployment-operations-optimize
