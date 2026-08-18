@@ -7,6 +7,7 @@
 /* ---------------- i18n dictionary ---------------- */
 const I18N = {
   en: {
+    "hero.welcome": "👋 Welcome to my homepage", "hero.subline": "Building efficient & reliable large models for science",
     "nav.about": "About", "nav.research": "Research", "nav.publications": "Publications", "nav.contact": "Contact",
     "hero.affil": "University of Science and Technology of China (USTC)",
     "hero.tag1": "Large Language Models", "hero.tag2": "Parameter-Efficient Fine-Tuning", "hero.tag3": "AI for Science",
@@ -45,6 +46,7 @@ const I18N = {
     hlLabel: "Key Highlights",
   },
   zh: {
+    "hero.welcome": "👋 欢迎来到我的主页", "hero.subline": "打造高效可靠的大模型，与科学同行",
     "nav.about": "关于我", "nav.research": "研究方向", "nav.publications": "论文发表", "nav.contact": "联系",
     "hero.affil": "中国科学技术大学 (USTC)",
     "hero.tag1": "大语言模型", "hero.tag2": "参数高效微调", "hero.tag3": "AI for Science",
@@ -564,8 +566,8 @@ function renderPubs(filter) {
         (p.hl[lang] || []).map((x) => "<li>" + x + "</li>").join("") + "</ul></details>"
       : "";
     const fig = FIG_MAP[p.title]
-      ? '<div class="pub-fig"><img src="img/papers/' + FIG_MAP[p.title] +
-        '" alt="' + p.title + '" loading="lazy"></div>'
+      ? '<div class="pub-fig"><div class="pub-fig-inner"><img src="img/papers/' + FIG_MAP[p.title] +
+        '" alt="' + p.title + '" loading="lazy"></div></div>'
       : "";
     const el = document.createElement("article");
     el.className = "pub";
@@ -700,6 +702,48 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     });
   });
 }
+
+/* mouse-follow spotlight */
+(function spotlight() {
+  const spot = document.getElementById("spotlight");
+  if (!spot || !window.matchMedia("(pointer: fine)").matches) return;
+  let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+  let cx = tx, cy = ty;
+  document.addEventListener("mousemove", (e) => {
+    tx = e.clientX; ty = e.clientY;
+    spot.style.opacity = "1";
+  }, { passive: true });
+  (function follow() {
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    spot.style.transform = "translate(" + (cx - spot.offsetWidth / 2) + "px," + (cy - spot.offsetHeight / 2) + "px)";
+    requestAnimationFrame(follow);
+  })();
+})();
+
+/* scroll progress bar */
+(function progressBar() {
+  const bar = document.getElementById("progressBar");
+  if (!bar) return;
+  window.addEventListener("scroll", () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+  }, { passive: true });
+})();
+
+/* active-section highlighted nav link */
+(function navSpy() {
+  const links = document.querySelectorAll(".nav-links a");
+  const secs = [...document.querySelectorAll(".section")];
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const id = e.target.id;
+      links.forEach((l) => l.classList.toggle("active", l.hash === "#" + id));
+    });
+  }, { threshold: 0.3 });
+  secs.forEach((s) => io.observe(s));
+})();
 
 /* ---------------- init ---------------- */
 function init() {
