@@ -45,3 +45,10 @@ const badCat = papersArr.filter((p) => !["peft", "science", "bench"].includes(p.
 console.log("papers with bad category:", badCat.length ? badCat : "none");
 const badVenue = papersArr.filter((p) => !["neurips", "iclr", "emnlp", "arxiv", "icml"].includes(p.venueClass)).map((p) => p.title);
 console.log("papers with unknown venue class:", badVenue.length ? badVenue : "none");
+const badRole = papersArr.filter((p) => !Array.isArray(p.roles)).map((p) => p.title);
+console.log("papers with missing roles array:", badRole.length ? badRole : "none");
+const badRoleVal = papersArr.filter((p) => (p.roles || []).some((r) => !["first", "cofirst", "lead"].includes(r))).map((p) => p.title);
+console.log("papers with invalid role value:", badRoleVal.length ? badRoleVal : "none");
+const noHl = papersArr.filter((p) => !p.hl || !p.hl.en || !p.hl.zh || !p.hl.en.length || !p.hl.zh.length).map((p) => p.title);
+console.log("papers missing bilingual highlights:", noHl.length ? noHl : "none");
+console.log("roles summary:", JSON.stringify(papersArr.map((p) => p.title.slice(0, 30) + " -> " + (p.roles || []).join("+"))));
