@@ -523,13 +523,13 @@ body {
 .pub-list { display: flex; flex-direction: column; gap: 18px; }
 
 .pub {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  padding: 18px;
+  padding: 22px 24px;
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -553,32 +553,24 @@ body {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  margin-top: 4px;
   background: linear-gradient(135deg, #eef2ff, #f0fdff);
   box-shadow: inset 0 0 0 1px rgba(15,23,42,0.06);
 }
 .pub-fig img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   transition: transform 0.5s ease;
 }
-.pub:hover .pub-fig img { transform: scale(1.05); }
+.pub:hover .pub-fig img { transform: scale(1.03); }
 .pub-fig::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(99,102,241,0.12), transparent 55%);
+  background: linear-gradient(135deg, rgba(99,102,241,0.1), transparent 55%);
   pointer-events: none;
-}
-.pub-fig .fig-emoji {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.4rem;
 }
 
 .pub-body { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
@@ -713,8 +705,6 @@ a.contact-item:hover {
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
-  .pub { grid-template-columns: 1fr; }
-  .pub-fig { aspect-ratio: 16 / 9; }
   .menu-btn { display: flex; }
   .nav-links {
     position: fixed;

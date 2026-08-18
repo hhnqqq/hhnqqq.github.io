@@ -572,8 +572,6 @@ function renderPubs(filter) {
     el.dataset.cat = p.cat;
     el.style.animationDelay = (idx * 0.05) + "s";
     el.innerHTML =
-      fig +
-      '<div class="pub-body">' +
         '<div class="pub-head">' +
           '<span class="pub-title">' + p.title + '</span>' +
           '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
@@ -581,10 +579,10 @@ function renderPubs(filter) {
           '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
         '</div>' +
         '<div class="pub-authors">' + authors + '</div>' +
+        fig +
         '<div class="pub-note">' + p.note[lang] + '</div>' +
         hl +
-        '<div class="pub-links">' + links.join("") + '</div>' +
-      '</div>';
+        '<div class="pub-links">' + links.join("") + '</div>';
     list.appendChild(el);
   });
 }
