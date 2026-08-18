@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haonan He | 何昊男 — Homepage</title>
+  <meta name="description" content="Haonan He — Student at University of Science and Technology of China. Research on large language models, parameter-efficient fine-tuning, and AI for science.">
+  <meta property="og:title" content="Haonan He | 何昊男">
+  <meta property="og:description" content="Large Language Models · Parameter-Efficient Fine-Tuning · AI for Science">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/59022162?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ======== Nav ======== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo"><span class="logo-dot"></span>Haonan He<span class="logo-cn">何昊男</span></a>
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#research" data-i18n="nav.research">Research</a></li>
+        <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">中文</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== Hero ======== -->
+  <header class="hero" id="home">
+    <div class="hero-inner">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/59022162?v=4" alt="Haonan He" referrerpolicy="no-referrer">
+      </div>
+      <h1 class="hero-name">Haonan He <span class="cn-name">何昊男</span></h1>
+      <div class="hero-role">
+        <span class="typed-cursor"></span><span id="typed"></span>
+      </div>
+      <p class="hero-affil" data-i18n="hero.affil">University of Science and Technology of China (USTC)</p>
+      <div class="hero-tags">
+        <span class="tag" data-i18n="hero.tag1">Large Language Models</span>
+        <span class="tag" data-i18n="hero.tag2">Parameter-Efficient Fine-Tuning</span>
+        <span class="tag" data-i18n="hero.tag3">AI for Science</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-num" data-count="183">0</div>
+          <div class="stat-label" data-i18n="hero.stat1">Citations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" data-count="4">0</div>
+          <div class="stat-label" data-i18n="hero.stat2">h-index</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" data-count="3">0</div>
+          <div class="stat-label" data-i18n="hero.stat3">i10-index</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" data-count="15">0</div>
+          <div class="stat-label" data-i18n="hero.stat4">Publications</div>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://scholar.google.com/citations?user=6YRQTlQAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span data-i18n="hero.cta1">Google Scholar</span>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/hhnqqq" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.24 2.873.118 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.625-5.476 5.92.43.37.814 1.102.814 2.222 0 1.606-.015 2.898-.015 3.293 0 .32.216.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span data-i18n="hero.cta2">GitHub</span>
+        </a>
+      </div>
+    </div>
+    <a class="scroll-hint" href="#about" aria-hidden="true">
+      <span class="mouse"><span class="wheel"></span></span>
+    </a>
+  </header>
+
+  <main>
+    <!-- ======== About ======== -->
+    <section class="section" id="about">
+      <h2 class="section-title"><span class="sec-idx">01</span><span data-i18n="about.title">About Me</span></h2>
+      <div class="section-body">
+        <p data-i18n="about.p1">I am a student at the <b>University of Science and Technology of China (USTC)</b>, working at the intersection of <b>large language models</b>, <b>parameter-efficient fine-tuning</b>, and <b>AI for science</b>. My research focuses on making LLMs more efficient to train and adapt, while pushing their scientific reasoning capabilities to Olympiad-level frontiers.</p>
+        <p data-i18n="about.p2">I have first-authored works on gradient-driven adaptive low-rank adaptation (GoRA, NeurIPS 2025), a unified study of LoRA variants (LoRAFactory), and a multi-omics instruction dataset for LLMs (Biology-Instructions, EMNLP 2025 Findings). I also contributed to physics-reasoning models that achieved gold-medal-level performance at the International Physics Olympiad (IPhO).</p>
+      </div>
+    </section>
+
+    <!-- ======== Research ======== -->
+    <section class="section" id="research">
+      <h2 class="section-title"><span class="sec-idx">02</span><span data-i18n="research.title">Research Interests</span></h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3 data-i18n="research.c1t">Efficient Fine-Tuning</h3>
+          <p data-i18n="research.c1d">Gradient-driven and unified studies of LoRA variants — adaptive rank allocation, entropy-guided sharing, and MoE-style adaptation for parameter-efficient fine-tuning.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3 data-i18n="research.c2t">Scientific Reasoning</h3>
+          <p data-i18n="research.c2d">Reinforcement-learning-trained models that master physics Olympiads, achieve gold-medal performance at IPhO, and bridge visual perception with scientific reasoning.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧬</div>
+          <h3 data-i18n="research.c3t">AI for Science</h3>
+          <p data-i18n="research.c3d">Multi-omics sequence understanding with LLMs — datasets and benchmarks that teach models to reason over DNA, RNA, and protein sequences.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3 data-i18n="research.c4t">LLM Agents & Benchmarks</h3>
+          <p data-i18n="research.c4d">Long-horizon agentic models, controllable test-time scaling, Chinese LLM benchmarks (SuperCLUE), and trillion-parameter-level performance with compact agents.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== Highlights ======== -->
+    <section class="section" id="highlights">
+      <h2 class="section-title"><span class="sec-idx">03</span><span data-i18n="hl.title">Research Highlights</span></h2>
+      <div class="hl-grid">
+        <a class="hl-card" href="https://arxiv.org/abs/2502.12171" target="_blank" rel="noopener">
+          <div class="hl-venue">NeurIPS 2025</div>
+          <h3>GoRA: Gradient-driven Adaptive Low Rank Adaptation</h3>
+          <p data-i18n="hl.gora">First-author. A unified framework that adapts both rank and initialization using gradient information — outperforming vanilla LoRA by 5+ points on math reasoning.</p>
+          <div class="hl-foot"><span>⭐ First Author</span><span class="hl-cites">32 cites</span></div>
+        </a>
+        <a class="hl-card" href="https://arxiv.org/abs/2412.19191" target="_blank" rel="noopener">
+          <div class="hl-venue">EMNLP 2025 Findings</div>
+          <h3>Biology-Instructions</h3>
+          <p data-i18n="hl.bio">First-author. The first large-scale instruction-tuning dataset and benchmark for multi-omics sequence understanding of LLMs, powering the ChatMultiOmics baseline.</p>
+          <div class="hl-foot"><span>⭐ First Author</span><span class="hl-cites">9 cites</span></div>
+        </a>
+        <a class="hl-card" href="https://arxiv.org/abs/2511.13612" target="_blank" rel="noopener">
+          <div class="hl-venue">IPhO 2025 Gold</div>
+          <h3>P1: Mastering Physics Olympiads</h3>
+          <p data-i18n="hl.p1">First open-source model with gold-medal performance at IPhO 2025, winning 12 of 13 international physics competitions.</p>
+          <div class="hl-foot"><span>Co-Author</span><span class="hl-cites">4 cites</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======== Publications ======== -->
+    <section class="section" id="publications">
+      <h2 class="section-title"><span class="sec-idx">04</span><span data-i18n="pub.title">Publications</span></h2>
+      <div class="filters" id="pubFilters">
+        <button class="filter-btn active" data-filter="all" data-i18n="pub.fAll">All</button>
+        <button class="filter-btn" data-filter="peft" data-i18n="pub.fPeft">Fine-Tuning</button>
+        <button class="filter-btn" data-filter="science" data-i18n="pub.fScience">AI for Science</button>
+        <button class="filter-btn" data-filter="bench" data-i18n="pub.fBench">Benchmarks & Agents</button>
+      </div>
+      <div class="pub-list" id="pubList"></div>
+    </section>
+
+    <!-- ======== Contact ======== -->
+    <section class="section" id="contact">
+      <h2 class="section-title"><span class="sec-idx">05</span><span data-i18n="contact.title">Contact</span></h2>
+      <div class="contact-links">
+        <a class="contact-item" href="https://scholar.google.com/citations?user=6YRQTlQAAAAJ&hl=en" target="_blank" rel="noopener">
+          <span class="ci-icon">🎓</span>
+          <span>
+            <b data-i18n="contact.scholar">Google Scholar</b>
+            <small data-i18n="contact.scholarD">Profile · citation metrics</small>
+          </span>
+        </a>
+        <a class="contact-item" href="https://github.com/hhnqqq" target="_blank" rel="noopener">
+          <span class="ci-icon">🐙</span>
+          <span>
+            <b>GitHub</b>
+            <small>@hhnqqq · code & projects</small>
+          </span>
+        </a>
+        <a class="contact-item" href="https://www.zhihu.com/people/nan-nan-nan-nan-x" target="_blank" rel="noopener">
+          <span class="ci-icon">📘</span>
+          <span>
+            <b>Zhihu</b>
+            <small data-i18n="contact.zhihuD">Chinese Q&A platform</small>
+          </span>
+        </a>
+        <div class="contact-item">
+          <span class="ci-icon">🏫</span>
+          <span>
+            <b data-i18n="contact.uni">USTC</b>
+            <small data-i18n="contact.uniD">Hefei, Anhui, China</small>
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footer.line">© <span id="year"></span> Haonan He. Built with ❤ — powered by GitHub Pages.</p>
+    <p class="footer-sub" data-i18n="footer.sub">Last updated: Aug 2026 · Citation data from Google Scholar</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
