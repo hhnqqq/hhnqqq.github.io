@@ -41,7 +41,7 @@ const noScholar = papersArr.filter((p) => !sc[p.title]).map((p) => p.title);
 console.log("papers missing scholar citation link:", noScholar.length ? noScholar : "none");
 const noNote = papersArr.filter((p) => !p.note || !p.note.en || !p.note.zh).map((p) => p.title);
 console.log("papers missing bilingual note:", noNote.length ? noNote : "none");
-const badCat = papersArr.filter((p) => !["peft", "science", "bench"].includes(p.cat)).map((p) => p.title);
+const badCat = papersArr.filter((p) => !["peft", "rl", "bench"].includes(p.cat)).map((p) => p.title);
 console.log("papers with bad category:", badCat.length ? badCat : "none");
 const badVenue = papersArr.filter((p) => !["neurips", "iclr", "emnlp", "arxiv", "icml"].includes(p.venueClass)).map((p) => p.title);
 console.log("papers with unknown venue class:", badVenue.length ? badVenue : "none");

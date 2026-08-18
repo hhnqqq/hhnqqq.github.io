@@ -688,8 +688,8 @@ body {
 .pub:hover::before { opacity: 1; }
 @keyframes pubIn { to { opacity: 1; transform: translateY(0); } }
 .pub[data-cat="peft"] { border-left: 4px solid var(--accent1); }
-.pub[data-cat="science"] { border-left: 4px solid var(--accent3); }
-.pub[data-cat="bench"] { border-left: 4px solid var(--accent2); }
+.pub[data-cat="rl"] { border-left: 4px solid var(--accent2); }
+.pub[data-cat="bench"] { border-left: 4px solid var(--accent3); }
 
 .pub-fig {
   position: relative;
