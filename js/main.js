@@ -461,6 +461,25 @@ const scholarUrl = (title) => {
     : "https://scholar.google.com/scholar?q=" + encodeURIComponent('"' + title + '"');
 };
 
+const FIG_MAP = {
+  "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning": "SimpleOPD.jpg",
+  "GoRA: Gradient-driven Adaptive Low Rank Adaptation": "GoRA.jpg",
+  "Biology-Instructions: A Dataset and Benchmark for Multi-Omics Sequence Understanding Capability of Large Language Models": "Biology-Instructions.jpg",
+  "A Unified Study of LoRA Variants: Taxonomy, Review, Codebase, and Empirical Evaluation": "LoRA-Variants.jpg",
+  "SuperCLUE: A Comprehensive Chinese Large Language Model Benchmark": "SuperCLUE.jpg",
+  "Scaling Physical Reasoning with the PHYSICS Dataset": "PHYSICS.jpg",
+  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.svg",
+  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.jpg",
+  "Gradient Intrinsic Dimensionality Alignment: Narrowing the Gap Between Low-Rank Adaptation and Full Fine-Tuning": "GIDA.svg",
+  "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing": "E2LoRA.svg",
+  "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future": "CI-Survey.svg",
+  "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent": "Agents-A1.jpg",
+  "Control-R: Towards Controllable Test-Time Scaling": "Control-R.jpg",
+  "MoE²-LoRA: When MoE Models Meet MoE-style Low-Rank Adaptation": "MoE2-LoRA.jpg",
+  "Parametric Skills": "Parametric-Skills.svg",
+  "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": "Maize.svg",
+};
+
 /* ---------------- state ---------------- */
 let lang = localStorage.getItem("hh-lang") || "en";
 
@@ -544,21 +563,28 @@ function renderPubs(filter) {
       ? '<details class="pub-hl"><summary>' + t.hlLabel + '</summary><ul>' +
         (p.hl[lang] || []).map((x) => "<li>" + x + "</li>").join("") + "</ul></details>"
       : "";
+    const fig = FIG_MAP[p.title]
+      ? '<div class="pub-fig"><img src="img/papers/' + FIG_MAP[p.title] +
+        '" alt="' + p.title + '" loading="lazy"></div>'
+      : "";
     const el = document.createElement("article");
     el.className = "pub";
     el.dataset.cat = p.cat;
     el.style.animationDelay = (idx * 0.05) + "s";
     el.innerHTML =
-      '<div class="pub-head">' +
-        '<span class="pub-title">' + p.title + '</span>' +
-        '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
-        badges +
-        '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
-      '</div>' +
-      '<div class="pub-authors">' + authors + '</div>' +
-      '<div class="pub-note">' + p.note[lang] + '</div>' +
-      hl +
-      '<div class="pub-links">' + links.join("") + '</div>';
+      fig +
+      '<div class="pub-body">' +
+        '<div class="pub-head">' +
+          '<span class="pub-title">' + p.title + '</span>' +
+          '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
+          badges +
+          '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
+        '</div>' +
+        '<div class="pub-authors">' + authors + '</div>' +
+        '<div class="pub-note">' + p.note[lang] + '</div>' +
+        hl +
+        '<div class="pub-links">' + links.join("") + '</div>' +
+      '</div>';
     list.appendChild(el);
   });
 }
@@ -586,7 +612,7 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
   resize();
   window.addEventListener("resize", resize);
 
-  const colors = ["99,102,241", "34,211,238", "168,85,247"];
+  const colors = ["99,102,241", "6,182,212", "236,72,153"];
   for (let i = 0; i < N; i++) {
     pts.push({
       x: Math.random() * w, y: Math.random() * h,
@@ -605,8 +631,8 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
       if (p.y < 0 || p.y > h) p.vy *= -1;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(" + p.c + ",0.8)";
-      ctx.shadowColor = "rgba(" + p.c + ",0.9)";
+      ctx.fillStyle = "rgba(" + p.c + ",0.55)";
+      ctx.shadowColor = "rgba(" + p.c + ",0.6)";
       ctx.shadowBlur = 8;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -616,7 +642,7 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
         const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
         const d2 = dx * dx + dy * dy;
         if (d2 < 150 * 150 * devicePixelRatio) {
-          ctx.strokeStyle = "rgba(120,140,255," + (0.22 * (1 - Math.sqrt(d2) / (150 * devicePixelRatio))) + ")";
+          ctx.strokeStyle = "rgba(99,102,241," + (0.16 * (1 - Math.sqrt(d2) / (150 * devicePixelRatio))) + ")";
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(pts[i].x, pts[i].y);
@@ -662,8 +688,41 @@ document.querySelectorAll(".section, .stat-card, .hl-card, .card, .contact-item"
   reveal.observe(el);
 });
 
+/* 3D tilt on highlight cards */
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll(".hl-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = "perspective(700px) rotateX(" + (-py * 7).toFixed(2) + "deg) rotateY(" + (px * 7).toFixed(2) + "deg) translateY(-4px)";
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
 /* ---------------- init ---------------- */
-window.addEventListener("load", () => {
+function init() {
   applyLang();
   animateCounts();
-});
+  initTicker();
+}
+if (document.readyState !== "loading") {
+  init();
+} else {
+  document.addEventListener("DOMContentLoaded", init);
+}
+
+function initTicker() {
+  const track = document.getElementById("tickerTrack");
+  if (!track) return;
+  const chips = PAPERS.map((p) => p.venue);
+  chips.push("Google Scholar", "GitHub @hhnqqq", "Open Source", "LLM · PEFT · AI4Science");
+  const uniq = [...new Set(chips)];
+  const half = uniq
+    .map((v) => '<span class="ticker-chip"><span class="t-dot"></span>' + v + "</span>")
+    .join("");
+  track.innerHTML = half + half;
+}

@@ -10,8 +10,9 @@ Haonan He's personal homepage, hosted on GitHub Pages. Bilingual (EN / 中文), 
 
 ```
 ├── index.html      # Single-page site
-├── css/style.css   # Styles
+├── css/style.css   # Styles (light theme)
 ├── js/main.js      # i18n, particles, publications data & animations
+├── img/papers/     # Main figure of each paper (arXiv figures + generated SVGs)
 └── papers.bib      # BibTeX of all publications
 ```
 
