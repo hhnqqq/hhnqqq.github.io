@@ -86,7 +86,7 @@ const I18N = {
 
 /* ---------------- publication data ---------------- */
 const PAPERS = [
-  {
+{
     title: "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning",
     authors: ["H. He", "H. Lei", "Y. Luo", "H. Zhang", "S. Zhang", "Y. Li", "S. Tang", "Z. Wang", "R. Zhan", "L. Bai", "et al."],
     venue: "arXiv 2608.14277", venueClass: "arxiv", year: 2026, cites: 0, roles: ["first"],
@@ -110,7 +110,7 @@ const PAPERS = [
       ],
     },
   },
-  {
+{
     title: "GoRA: Gradient-driven Adaptive Low Rank Adaptation",
     authors: ["H. He", "P. Ye", "Y. Ren", "Y. Yuan", "L. Zhou", "S. Ju", "L. Chen"],
     venue: "NeurIPS 2025", venueClass: "neurips", year: 2025, cites: 32, roles: ["first"],
@@ -132,7 +132,7 @@ const PAPERS = [
       ],
     },
   },
-  {
+{
     title: "Biology-Instructions: A Dataset and Benchmark for Multi-Omics Sequence Understanding Capability of Large Language Models",
     authors: ["H. He", "Y. Ren", "Y. Tang", "Z. Xu", "J. Li", "M. Yang", "D. Zhang", "D. Yuan", "T. Chen", "et al."],
     venue: "EMNLP 2025 Findings", venueClass: "emnlp", year: 2024, cites: 9, roles: ["first"],
@@ -154,7 +154,7 @@ const PAPERS = [
       ],
     },
   },
-  {
+{
     title: "A Unified Study of LoRA Variants: Taxonomy, Review, Codebase, and Empirical Evaluation",
     authors: ["H. He", "J. Ye", "M. Li", "Z. Wang", "T. Chen", "L. Bai", "P. Ye"],
     venue: "arXiv 2601.22708", venueClass: "arxiv", year: 2026, cites: 1, roles: ["first"],
@@ -178,97 +178,7 @@ const PAPERS = [
       ],
     },
   },
-  {
-    title: "SuperCLUE: A Comprehensive Chinese Large Language Model Benchmark",
-    authors: ["L. Xu", "A. Li", "L. Zhu", "H. Xue", "C. Zhu", "K. Zhao", "H. He", "X. Zhang", "Q. Kang", "Z. Lan"],
-    venue: "arXiv 2307.15020", venueClass: "arxiv", year: 2023, cites: 108, roles: [],
-    cat: "bench",
-    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2307.15020" }],
-    note: { en: "Comprehensive Chinese LLM benchmark covering 16 competencies across language, reasoning & tools.", zh: "覆盖 16 项核心能力的中文大模型综合评测基准。" },
-    hl: {
-      en: [
-        "Chinese LLM benchmark with three sub-tasks: CArena (real battle ratings), OPEN (open-ended dialogues), CLOSE (closed-ended)",
-        "Shows closed-ended accuracy alone cannot reflect human preferences on open-ended questions",
-        "Demonstrates GPT-4 as a reliable judge for automatic Chinese preference evaluation",
-        "108+ citations — one of the most widely used Chinese LLM benchmarks",
-      ],
-      zh: [
-        "中文大模型基准，包含三个子任务：CArena（真实对战场次评分）、OPEN（开放问答）、CLOSE（封闭问答）",
-        "揭示仅凭封闭式题目的准确率无法反映开放题目上的人类偏好",
-        "证明 GPT-4 可作为中文开放题目偏好评估的可靠裁判",
-        "被引用 108+ 次，是中文大模型社区使用最广泛的基准之一",
-      ],
-    },
-  },
-  {
-    title: "Scaling Physical Reasoning with the PHYSICS Dataset",
-    authors: ["S. Zheng", "Q. Cheng", "J. Yao", "M. Wu", "H. He", "N. Ding", "Y. Cheng", "S. Hu", "L. Bai", "et al."],
-    venue: "NeurIPS 2025", venueClass: "neurips", year: 2025, cites: 17, roles: [],
-    cat: "science",
-    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2506.00022" }],
-    note: { en: "Large-scale physics dataset enabling Olympiad-level physical reasoning at scale.", zh: "大规模物理数据集，支撑奥林匹克级物理推理能力的扩展。" },
-    hl: {
-      en: [
-        "16,568 high-quality physics problems curated from 100+ textbooks via a quality-control pipeline",
-        "Covers 5 major domains: Mechanics, Electromagnetism, Thermodynamics, Optics, Modern Physics",
-        "Difficulty spans high school to graduate-level physics courses",
-        "Rule+Model evaluation framework corrects biases in units, simplification & precision",
-        "Code & data released (github.com/Zhengsh123/PHYSICS)",
-      ],
-      zh: [
-        "从 100+ 本教材中经严格质量管控流程筛选出 16,568 道高质量物理题",
-        "覆盖五大领域：力学、电磁学、热学、光学与现代物理",
-        "难度从高中到研究生物理课程全覆盖",
-        "提出 Rule+Model 评测框架，修正单位、化简与精度方面的评估偏差",
-        "代码与数据开源 (github.com/Zhengsh123/PHYSICS)",
-      ],
-    },
-  },
-  {
-    title: "P1: Mastering Physics Olympiads with Reinforcement Learning",
-    authors: ["J. Chen", "Q. Cheng", "F. Yu", "H. Wan", "Y. Zhang", "S. Zheng", "J. Yao", "Q. Zhang", "H. He", "et al."],
-    venue: "arXiv 2511.13612", venueClass: "arxiv", year: 2025, cites: 4, roles: [],
-    cat: "science",
-    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2511.13612" }],
-    note: { en: "First open-source model with gold-medal performance at IPhO 2025 — 12 golds across 13 competitions.", zh: "首个在 IPhO 2025 达到金牌表现的开源模型——13 项竞赛中斩获 12 枚金牌。" },
-    hl: {
-      en: [
-        "P1-235B-A22B: first open-source model with gold-medal performance at IPhO 2025",
-        "12 gold medals out of 13 international/regional physics competitions in 2024/2025",
-        "P1-30B-A3B also achieves silver; agentic framework PhysicsMinions → overall No.1 on IPhO 2025",
-        "Trained entirely through reinforcement learning; strong transfer to math & coding",
-      ],
-      zh: [
-        "P1-235B-A22B：首个在 IPhO 2025 达到金牌表现的开源模型",
-        "2024/2025 年 13 项国际/区域物理竞赛中斩获 12 枚金牌",
-        "P1-30B-A3B 亦获银牌；配合智能体框架 PhysicsMinions 实现 IPhO 2025 总分第一",
-        "完全通过强化学习训练，在数学与编程任务上展现出强大泛化能力",
-      ],
-    },
-  },
-  {
-    title: "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads",
-    authors: ["Y. Luo", "F. Wang", "Q. Cheng", "F. Yu", "H. Lei", "J. Yan", "C. Li", "J. Chen", "Y. Zhao", "H. Wan", "et al."],
-    venue: "AI4Math@ICML 2026", venueClass: "icml", year: 2026, cites: 4, roles: [],
-    cat: "science",
-    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2602.09443" }],
-    note: { en: "First open-source VLM with 12 gold medals on HiPhO; No.2 globally with agent augmentation.", zh: "首个在 HiPhO 夺得 12 枚金牌的开源多模态模型，智能体增强后全球排名第 2。" },
-    hl: {
-      en: [
-        "P1-VL-235B-A22B: first open-source VLM to secure 12 gold medals on HiPhO (13 exams, 2024-2025)",
-        "Curriculum Reinforcement Learning with progressive difficulty expansion stabilizes post-training",
-        "Agentic Augmentation enables iterative self-verification at inference → No.2 overall, behind only Gemini-3-Pro",
-        "Strong generalization to broader STEM benchmarks",
-      ],
-      zh: [
-        "P1-VL-235B-A22B：首个在 HiPhO（2024-2025 共 13 场考试）斩获 12 枚金牌的开源多模态模型",
-        "课程式强化学习 + 渐进难度扩展，稳定后训练过程",
-        "智能体增强实现推理时迭代自校验，综合排名全球第 2，仅次于 Gemini-3-Pro",
-        "在更广泛的 STEM 基准上展现卓越泛化能力",
-      ],
-    },
-  },
-  {
+{
     title: "Gradient Intrinsic Dimensionality Alignment: Narrowing the Gap Between Low-Rank Adaptation and Full Fine-Tuning",
     authors: ["J. Ye", "H. He", "M. Li", "F. Han", "T. Chen", "P. Ye"],
     venue: "ICLR 2026", venueClass: "iclr", year: 2026, cites: 2, roles: ["cofirst"],
@@ -288,91 +198,7 @@ const PAPERS = [
       ],
     },
   },
-  {
-    title: "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing",
-    authors: ["M. Li", "P. Ye", "J. Ye", "H. He", "T. Chen"],
-    venue: "ICLR 2026", venueClass: "iclr", year: 2026, cites: 2, roles: [],
-    cat: "peft",
-    links: [],
-    note: { en: "Entropy-guided adaptive sharing of low-rank parameters for efficient & effective adaptation.", zh: "基于熵引导的自适应参数共享，实现高效且有效的低秩适配。" },
-    hl: {
-      en: [
-        "Entropy-guided adaptive sharing strategy for low-rank parameters",
-        "Balances efficiency and effectiveness across fine-tuning budgets",
-        "ICLR 2026 acceptance",
-      ],
-      zh: [
-        "基于熵引导的低秩参数自适应共享策略",
-        "在不同微调预算下兼顾效率与效果",
-        "被 ICLR 2026 接收",
-      ],
-    },
-  },
-  {
-    title: "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future",
-    authors: ["Y. Jiang", "S. Yang", "S. Tang", "S. Zheng", "J. Cao", "et al."],
-    venue: "Survey 2025", venueClass: "arxiv", year: 2025, cites: 2, roles: [],
-    cat: "bench",
-    links: [],
-    note: { en: "Systematic survey of LLM-driven collective intelligence — from multi-agent emergence to future frontiers.", zh: "系统综述 LLM 驱动的群体智能——从多智能体涌现到未来前沿。" },
-    hl: {
-      en: [
-        "Systematic survey of LLM-driven collective intelligence",
-        "Traces the evolution from single-agent emergence to collective behavior",
-        "Outlines open challenges and future directions",
-      ],
-      zh: [
-        "LLM 驱动群体智能的系统性综述",
-        "梳理从单智能体涌现到群体协作行为的演进脉络",
-        "展望开放挑战与未来方向",
-      ],
-    },
-  },
-  {
-    title: "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent",
-    authors: ["L. Bai", "Z. Cao", "Y. Chen", "Z. Cui", "S. Du", "Y. Fan", "S. Feng", "Z. Guo", "H. He", "L. He", "et al."],
-    venue: "arXiv 2606.30616", venueClass: "arxiv", year: 2026, cites: 1, roles: [],
-    cat: "bench",
-    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2606.30616" }],
-    note: { en: "Agents-A1: a 35B MoE agent reaching trillion-parameter-level performance by scaling the agent horizon.", zh: "Agents-A1: 通过扩展智能体时间跨度 (horizon), 35B MoE 智能体达到万亿参数级性能。" },
-    hl: {
-      en: [
-        "Agents-A1: a 35B MoE agentic model reaching trillion-parameter-level performance",
-        "Scales agent horizon: long-horizon trajectories (avg 45K tokens) + heterogeneous agent abilities",
-        "Three-stage training: full-domain SFT → domain teacher models → multi-teacher domain-routed on-policy distillation",
-        "Beats 1T models on SEAL-0 (56.4), IFBench (80.6), HiPhO (46.4), FrontierScience-Olympiad (79.0), MolBench-Bind (56.8)",
-      ],
-      zh: [
-        "Agents-A1：35B MoE 智能体模型，达到万亿参数级性能",
-        "扩展智能体 horizon：长程轨迹（平均 45K token）+ 异构智能体能力",
-        "三阶段训练：全域 SFT → 领域教师模型 → 多教师领域路由在线蒸馏",
-        "在 SEAL-0 (56.4)、IFBench (80.6)、HiPhO (46.4)、FrontierScience-Olympiad (79.0)、MolBench-Bind (56.8) 上超越 1T 模型",
-      ],
-    },
-  },
-  {
-    title: "Control-R: Towards Controllable Test-Time Scaling",
-    authors: ["D. Zhang", "W. Wang", "J. Li", "X. Wang", "J. Li", "J. Wu", "J. Lei", "H. He", "P. Ye", "S. Zhang", "et al."],
-    venue: "arXiv 2506.00189", venueClass: "arxiv", year: 2025, cites: 1, roles: [],
-    cat: "bench",
-    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2506.00189" }],
-    note: { en: "Reasoning Control Fields for controllable long CoT, SOTA at 32B scale on AIME2024/MATH500.", zh: "推理控制场实现可控长思维链, 在 32B 规模 AIME2024/MATH500 上达到 SOTA。" },
-    hl: {
-      en: [
-        "Reasoning Control Fields (RCF): inject structured control signals to guide reasoning effort (tree-search perspective)",
-        "Control-R-4K dataset: challenging problems annotated with reasoning processes & control fields",
-        "Conditional Distillation Finetuning (CDF) trains models for controllable reasoning effort",
-        "SOTA at 32B scale on AIME2024 & MATH500 with controllable long CoT",
-      ],
-      zh: [
-        "推理控制场 (RCF)：从树搜索视角注入结构化控制信号，引导推理强度",
-        "Control-R-4K 数据集：难题 + 详细推理过程与控制场标注",
-        "条件蒸馏微调 (CDF) 训练模型按需调节推理强度",
-        "在 32B 规模 AIME2024 与 MATH500 上达到 SOTA，实现可控长思维链",
-      ],
-    },
-  },
-  {
+{
     title: "MoE²-LoRA: When MoE Models Meet MoE-style Low-Rank Adaptation",
     authors: ["Q. Yang", "H. He", "M. Li", "J. Ye", "T. Chen", "L. Bai", "P. Ye"],
     venue: "arXiv 2607.21978", venueClass: "arxiv", year: 2026, cites: 0, roles: ["cofirst", "lead"],
@@ -396,7 +222,7 @@ const PAPERS = [
       ],
     },
   },
-  {
+{
     title: "Parametric Skills",
     authors: ["X. Zhao", "H. He", "Q. Yang", "M. Li", "J. Ye", "Z. Tan", "B. Wan", "P. Ye"],
     venue: "CBW@COLM 2026", venueClass: "arxiv", year: 2026, cites: 0, roles: ["cofirst", "lead"],
@@ -416,7 +242,181 @@ const PAPERS = [
       ],
     },
   },
-  {
+{
+    title: "SuperCLUE: A Comprehensive Chinese Large Language Model Benchmark",
+    authors: ["L. Xu", "A. Li", "L. Zhu", "H. Xue", "C. Zhu", "K. Zhao", "H. He", "X. Zhang", "Q. Kang", "Z. Lan"],
+    venue: "arXiv 2307.15020", venueClass: "arxiv", year: 2023, cites: 108, roles: [],
+    cat: "bench",
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2307.15020" }],
+    note: { en: "Comprehensive Chinese LLM benchmark covering 16 competencies across language, reasoning & tools.", zh: "覆盖 16 项核心能力的中文大模型综合评测基准。" },
+    hl: {
+      en: [
+        "Chinese LLM benchmark with three sub-tasks: CArena (real battle ratings), OPEN (open-ended dialogues), CLOSE (closed-ended)",
+        "Shows closed-ended accuracy alone cannot reflect human preferences on open-ended questions",
+        "Demonstrates GPT-4 as a reliable judge for automatic Chinese preference evaluation",
+        "108+ citations — one of the most widely used Chinese LLM benchmarks",
+      ],
+      zh: [
+        "中文大模型基准，包含三个子任务：CArena（真实对战场次评分）、OPEN（开放问答）、CLOSE（封闭问答）",
+        "揭示仅凭封闭式题目的准确率无法反映开放题目上的人类偏好",
+        "证明 GPT-4 可作为中文开放题目偏好评估的可靠裁判",
+        "被引用 108+ 次，是中文大模型社区使用最广泛的基准之一",
+      ],
+    },
+  },
+{
+    title: "Scaling Physical Reasoning with the PHYSICS Dataset",
+    authors: ["S. Zheng", "Q. Cheng", "J. Yao", "M. Wu", "H. He", "N. Ding", "Y. Cheng", "S. Hu", "L. Bai", "et al."],
+    venue: "NeurIPS 2025", venueClass: "neurips", year: 2025, cites: 17, roles: [],
+    cat: "science",
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2506.00022" }],
+    note: { en: "Large-scale physics dataset enabling Olympiad-level physical reasoning at scale.", zh: "大规模物理数据集，支撑奥林匹克级物理推理能力的扩展。" },
+    hl: {
+      en: [
+        "16,568 high-quality physics problems curated from 100+ textbooks via a quality-control pipeline",
+        "Covers 5 major domains: Mechanics, Electromagnetism, Thermodynamics, Optics, Modern Physics",
+        "Difficulty spans high school to graduate-level physics courses",
+        "Rule+Model evaluation framework corrects biases in units, simplification & precision",
+        "Code & data released (github.com/Zhengsh123/PHYSICS)",
+      ],
+      zh: [
+        "从 100+ 本教材中经严格质量管控流程筛选出 16,568 道高质量物理题",
+        "覆盖五大领域：力学、电磁学、热学、光学与现代物理",
+        "难度从高中到研究生物理课程全覆盖",
+        "提出 Rule+Model 评测框架，修正单位、化简与精度方面的评估偏差",
+        "代码与数据开源 (github.com/Zhengsh123/PHYSICS)",
+      ],
+    },
+  },
+{
+    title: "P1: Mastering Physics Olympiads with Reinforcement Learning",
+    authors: ["J. Chen", "Q. Cheng", "F. Yu", "H. Wan", "Y. Zhang", "S. Zheng", "J. Yao", "Q. Zhang", "H. He", "et al."],
+    venue: "arXiv 2511.13612", venueClass: "arxiv", year: 2025, cites: 4, roles: [],
+    cat: "science",
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2511.13612" }],
+    note: { en: "First open-source model with gold-medal performance at IPhO 2025 — 12 golds across 13 competitions.", zh: "首个在 IPhO 2025 达到金牌表现的开源模型——13 项竞赛中斩获 12 枚金牌。" },
+    hl: {
+      en: [
+        "P1-235B-A22B: first open-source model with gold-medal performance at IPhO 2025",
+        "12 gold medals out of 13 international/regional physics competitions in 2024/2025",
+        "P1-30B-A3B also achieves silver; agentic framework PhysicsMinions → overall No.1 on IPhO 2025",
+        "Trained entirely through reinforcement learning; strong transfer to math & coding",
+      ],
+      zh: [
+        "P1-235B-A22B：首个在 IPhO 2025 达到金牌表现的开源模型",
+        "2024/2025 年 13 项国际/区域物理竞赛中斩获 12 枚金牌",
+        "P1-30B-A3B 亦获银牌；配合智能体框架 PhysicsMinions 实现 IPhO 2025 总分第一",
+        "完全通过强化学习训练，在数学与编程任务上展现出强大泛化能力",
+      ],
+    },
+  },
+{
+    title: "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads",
+    authors: ["Y. Luo", "F. Wang", "Q. Cheng", "F. Yu", "H. Lei", "J. Yan", "C. Li", "J. Chen", "Y. Zhao", "H. Wan", "et al."],
+    venue: "AI4Math@ICML 2026", venueClass: "icml", year: 2026, cites: 4, roles: [],
+    cat: "science",
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2602.09443" }],
+    note: { en: "First open-source VLM with 12 gold medals on HiPhO; No.2 globally with agent augmentation.", zh: "首个在 HiPhO 夺得 12 枚金牌的开源多模态模型，智能体增强后全球排名第 2。" },
+    hl: {
+      en: [
+        "P1-VL-235B-A22B: first open-source VLM to secure 12 gold medals on HiPhO (13 exams, 2024-2025)",
+        "Curriculum Reinforcement Learning with progressive difficulty expansion stabilizes post-training",
+        "Agentic Augmentation enables iterative self-verification at inference → No.2 overall, behind only Gemini-3-Pro",
+        "Strong generalization to broader STEM benchmarks",
+      ],
+      zh: [
+        "P1-VL-235B-A22B：首个在 HiPhO（2024-2025 共 13 场考试）斩获 12 枚金牌的开源多模态模型",
+        "课程式强化学习 + 渐进难度扩展，稳定后训练过程",
+        "智能体增强实现推理时迭代自校验，综合排名全球第 2，仅次于 Gemini-3-Pro",
+        "在更广泛的 STEM 基准上展现卓越泛化能力",
+      ],
+    },
+  },
+{
+    title: "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing",
+    authors: ["M. Li", "P. Ye", "J. Ye", "H. He", "T. Chen"],
+    venue: "ICLR 2026", venueClass: "iclr", year: 2026, cites: 2, roles: [],
+    cat: "peft",
+    links: [],
+    note: { en: "Entropy-guided adaptive sharing of low-rank parameters for efficient & effective adaptation.", zh: "基于熵引导的自适应参数共享，实现高效且有效的低秩适配。" },
+    hl: {
+      en: [
+        "Entropy-guided adaptive sharing strategy for low-rank parameters",
+        "Balances efficiency and effectiveness across fine-tuning budgets",
+        "ICLR 2026 acceptance",
+      ],
+      zh: [
+        "基于熵引导的低秩参数自适应共享策略",
+        "在不同微调预算下兼顾效率与效果",
+        "被 ICLR 2026 接收",
+      ],
+    },
+  },
+{
+    title: "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future",
+    authors: ["Y. Jiang", "S. Yang", "S. Tang", "S. Zheng", "J. Cao", "et al."],
+    venue: "Survey 2025", venueClass: "arxiv", year: 2025, cites: 2, roles: [],
+    cat: "bench",
+    links: [],
+    note: { en: "Systematic survey of LLM-driven collective intelligence — from multi-agent emergence to future frontiers.", zh: "系统综述 LLM 驱动的群体智能——从多智能体涌现到未来前沿。" },
+    hl: {
+      en: [
+        "Systematic survey of LLM-driven collective intelligence",
+        "Traces the evolution from single-agent emergence to collective behavior",
+        "Outlines open challenges and future directions",
+      ],
+      zh: [
+        "LLM 驱动群体智能的系统性综述",
+        "梳理从单智能体涌现到群体协作行为的演进脉络",
+        "展望开放挑战与未来方向",
+      ],
+    },
+  },
+{
+    title: "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent",
+    authors: ["L. Bai", "Z. Cao", "Y. Chen", "Z. Cui", "S. Du", "Y. Fan", "S. Feng", "Z. Guo", "H. He", "L. He", "et al."],
+    venue: "arXiv 2606.30616", venueClass: "arxiv", year: 2026, cites: 1, roles: [],
+    cat: "bench",
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2606.30616" }],
+    note: { en: "Agents-A1: a 35B MoE agent reaching trillion-parameter-level performance by scaling the agent horizon.", zh: "Agents-A1: 通过扩展智能体时间跨度 (horizon), 35B MoE 智能体达到万亿参数级性能。" },
+    hl: {
+      en: [
+        "Agents-A1: a 35B MoE agentic model reaching trillion-parameter-level performance",
+        "Scales agent horizon: long-horizon trajectories (avg 45K tokens) + heterogeneous agent abilities",
+        "Three-stage training: full-domain SFT → domain teacher models → multi-teacher domain-routed on-policy distillation",
+        "Beats 1T models on SEAL-0 (56.4), IFBench (80.6), HiPhO (46.4), FrontierScience-Olympiad (79.0), MolBench-Bind (56.8)",
+      ],
+      zh: [
+        "Agents-A1：35B MoE 智能体模型，达到万亿参数级性能",
+        "扩展智能体 horizon：长程轨迹（平均 45K token）+ 异构智能体能力",
+        "三阶段训练：全域 SFT → 领域教师模型 → 多教师领域路由在线蒸馏",
+        "在 SEAL-0 (56.4)、IFBench (80.6)、HiPhO (46.4)、FrontierScience-Olympiad (79.0)、MolBench-Bind (56.8) 上超越 1T 模型",
+      ],
+    },
+  },
+{
+    title: "Control-R: Towards Controllable Test-Time Scaling",
+    authors: ["D. Zhang", "W. Wang", "J. Li", "X. Wang", "J. Li", "J. Wu", "J. Lei", "H. He", "P. Ye", "S. Zhang", "et al."],
+    venue: "arXiv 2506.00189", venueClass: "arxiv", year: 2025, cites: 1, roles: [],
+    cat: "bench",
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2506.00189" }],
+    note: { en: "Reasoning Control Fields for controllable long CoT, SOTA at 32B scale on AIME2024/MATH500.", zh: "推理控制场实现可控长思维链, 在 32B 规模 AIME2024/MATH500 上达到 SOTA。" },
+    hl: {
+      en: [
+        "Reasoning Control Fields (RCF): inject structured control signals to guide reasoning effort (tree-search perspective)",
+        "Control-R-4K dataset: challenging problems annotated with reasoning processes & control fields",
+        "Conditional Distillation Finetuning (CDF) trains models for controllable reasoning effort",
+        "SOTA at 32B scale on AIME2024 & MATH500 with controllable long CoT",
+      ],
+      zh: [
+        "推理控制场 (RCF)：从树搜索视角注入结构化控制信号，引导推理强度",
+        "Control-R-4K 数据集：难题 + 详细推理过程与控制场标注",
+        "条件蒸馏微调 (CDF) 训练模型按需调节推理强度",
+        "在 32B 规模 AIME2024 与 MATH500 上达到 SOTA，实现可控长思维链",
+      ],
+    },
+  },
+{
     title: "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model",
     authors: ["J. Zou", "L. Chen", "H. He", "Y. Yuan"],
     venue: "Trans. CSAE 42(5)", venueClass: "arxiv", year: 2026, cites: 0, roles: [],
