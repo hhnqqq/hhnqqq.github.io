@@ -502,8 +502,8 @@ const FIG_MAP = {
   "A Unified Study of LoRA Variants: Taxonomy, Review, Codebase, and Empirical Evaluation": "LoRA-Variants.jpg",
   "SuperCLUE: A Comprehensive Chinese Large Language Model Benchmark": "SuperCLUE.jpg",
   "Scaling Physical Reasoning with the PHYSICS Dataset": "PHYSICS.jpg",
-  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.jpg",
-  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.jpg",
+  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.svg",
+  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.svg",
   "Gradient Intrinsic Dimensionality Alignment: Narrowing the Gap Between Low-Rank Adaptation and Full Fine-Tuning": "GIDA.jpg",
   "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing": "E2LoRA.jpg",
   "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future": "CI-Survey.jpg",
@@ -534,12 +534,6 @@ const FIG_RATIO = {
   "ExoMind: Democratizing Scientific Intelligence via Extended-Mind-Inspired Agentic System": 2.51,
   "Parametric Skills": 2.45,
   "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": 2.71,
-};
-
-/* high-resolution original for the lightbox (SVG = lossless original) */
-const FIG_FULL = {
-  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.svg",
-  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.svg",
 };
 
 /* ---------------- Hugging Face download stats ---------------- */
@@ -703,7 +697,7 @@ function renderPubs(filter) {
     const fig = FIG_MAP[p.title]
       ? '<div class="pub-fig" style="aspect-ratio:' + (FIG_RATIO[p.title] || 1.6) + '"><img src="img/papers/' + FIG_MAP[p.title] +
         '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\')"' +
-        (FIG_FULL[p.title] ? ' data-full="img/papers/' + FIG_FULL[p.title] + '"' : "") +
+         +
         '><span class="fig-zoom-hint">🔍 ' +
         (lang === "zh" ? "点击放大" : "Click to zoom") + '</span></div>'
       : "";
@@ -712,14 +706,14 @@ function renderPubs(filter) {
     el.dataset.cat = p.cat;
     el.style.animationDelay = (idx * 0.05) + "s";
     el.innerHTML =
-      '<div class="pub-head">' +
-        '<span class="pub-title">' + p.title + '</span>' +
-        '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
-        badges +
-        '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
-      '</div>' +
       fig +
       '<div class="pub-body">' +
+        '<div class="pub-head">' +
+          '<span class="pub-title">' + p.title + '</span>' +
+          '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
+          badges +
+          '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
+        '</div>' +
         '<div class="pub-authors">' + authors + '</div>' +
         '<div class="pub-note">' + p.note[lang] + '</div>' +
         hl +
