@@ -748,7 +748,7 @@ function applyLang() {
   });
   renderPubs();
   renderHighlights();
-  initTicker();
+  initFloatNews();
   restartTyping();
 }
 
@@ -1152,7 +1152,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 function init() {
   applyLang();
   animateCounts();
-  initTicker();
+  initFloatNews();
 }
 if (document.readyState !== "loading") {
   init();
@@ -1160,17 +1160,22 @@ if (document.readyState !== "loading") {
   document.addEventListener("DOMContentLoaded", init);
 }
 
-function initTicker() {
-  const track = document.getElementById("tickerTrack");
-  if (!track) return;
+function initFloatNews() {
+  const box = document.getElementById("floatNews");
+  if (!box) return;
   const NEWS = [
-    { href: "https://arxiv.org/abs/2608.14277", en: "SimpleOPD is now available on arXiv", zh: "SimpleOPD 已上线 arXiv" },
+    { href: "https://arxiv.org/abs/2608.14277", en: "SimpleOPD is now on arXiv", zh: "SimpleOPD 已上线 arXiv" },
     { href: "https://arxiv.org/abs/2606.30015", en: "Parametric Skills accepted by CBW @ COLM 2026", zh: "Parametric Skills 被 COLM 2026 CBW 接收" },
-    { href: "https://arxiv.org/abs/2607.21978", en: "MoE²-LoRA is now available on arXiv", zh: "MoE²-LoRA 已上线 arXiv" },
+    { href: "https://arxiv.org/abs/2607.21978", en: "MoE²-LoRA is now on arXiv", zh: "MoE²-LoRA 已上线 arXiv" },
   ];
-  const items = NEWS.map((n) =>
-    '<a class="ticker-chip" href="' + n.href + '" target="_blank" rel="noopener" aria-hidden="true"><span class="t-dot"></span>' +
-    n[lang] + "</a>"
+  const pos = [
+    { left: "5%", top: "30%" },
+    { right: "4%", top: "38%" },
+    { left: "8%", bottom: "22%" },
+  ];
+  box.innerHTML = NEWS.map((n, i) =>
+    '<a class="fn-badge" href="' + n.href + '" target="_blank" rel="noopener" style="' +
+    Object.entries(pos[i]).map(([k, v]) => k + ":" + v).join(";") + '">' +
+    '<span class="fn-fire">🔥</span>' + n[lang] + "</a>"
   ).join("");
-  track.innerHTML = items + items;
 }
