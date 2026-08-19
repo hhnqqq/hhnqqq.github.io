@@ -567,7 +567,8 @@ function renderPubs(filter) {
       : "";
     const fig = FIG_MAP[p.title]
       ? '<div class="pub-fig"><img src="img/papers/' + FIG_MAP[p.title] +
-        '" alt="' + p.title + '" loading="lazy"></div>'
+        '" alt="' + p.title + '" loading="lazy"><span class="fig-zoom-hint">🔍 ' +
+        (lang === "zh" ? "点击放大" : "Click to zoom") + '</span></div>'
       : "";
     const el = document.createElement("article");
     el.className = "pub";
@@ -599,13 +600,21 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
   renderPubs(btn.dataset.filter);
 });
 
-/* ---------------- particle background ---------------- */
-(function particles() {
+/* ---------------- dynamic background (particles / rain / snow / off) ---------------- */
+(function bgFX() {
   const canvas = document.getElementById("bg-canvas");
-  const ctx = canvas.getContext ? canvas.getContext("2d") : null;
-  if (!ctx) return;
-  let w, h, pts = [];
-  const N = 80;
+  const ctx = canvas && canvas.getContext ? canvas.getContext("2d") : null;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!ctx || reduced) {
+    const btns = document.querySelectorAll(".bg-btn");
+    btns.forEach((b) => b.classList.remove("active"));
+    return;
+  }
+
+  let w, h, raf = null;
+  let mode = localStorage.getItem("hh-bg") || "particles";
+  const ptColors = ["99,102,241", "6,182,212", "236,72,153"];
+  let pts = [], drops = [], ripples = [], flakes = [];
 
   const resize = () => {
     w = canvas.width = window.innerWidth * devicePixelRatio;
@@ -614,18 +623,20 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
   resize();
   window.addEventListener("resize", resize);
 
-  const colors = ["99,102,241", "6,182,212", "236,72,153"];
-  for (let i = 0; i < N; i++) {
-    pts.push({
-      x: Math.random() * w, y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
-      vy: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
-      r: (Math.random() * 1.6 + 0.5) * devicePixelRatio,
-      c: colors[i % 3],
-    });
+  /* ---- particles (network) ---- */
+  function initParticles() {
+    pts = [];
+    for (let i = 0; i < 80; i++) {
+      pts.push({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
+        vy: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
+        r: (Math.random() * 1.6 + 0.5) * devicePixelRatio,
+        c: ptColors[i % 3],
+      });
+    }
   }
-
-  function frame() {
+  function frameParticles() {
     ctx.clearRect(0, 0, w, h);
     for (const p of pts) {
       p.x += p.vx; p.y += p.vy;
@@ -653,13 +664,108 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
         }
       }
     }
-    requestAnimationFrame(frame);
   }
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    ctx.fillStyle = "rgba(255,255,255,0.04)";
-  } else {
-    frame();
+
+  /* ---- rain ---- */
+  function frameRain() {
+    ctx.clearRect(0, 0, w, h);
+    // spawn
+    for (let i = 0; i < 3; i++) {
+      if (drops.length < 160) {
+        drops.push({
+          x: Math.random() * (w + 100) - 50,
+          y: Math.random() * -80 * devicePixelRatio,
+          vx: (1.4 + Math.random() * 1.6) * devicePixelRatio,
+          vy: (7 + Math.random() * 5) * devicePixelRatio,
+          len: (14 + Math.random() * 12) * devicePixelRatio,
+          alpha: 0.12 + Math.random() * 0.16,
+        });
+      }
+    }
+    ctx.lineCap = "round";
+    for (const d of drops) {
+      d.x += d.vx; d.y += d.vy;
+      ctx.strokeStyle = "rgba(91, 100, 148," + d.alpha + ")";
+      ctx.lineWidth = 1.3 * devicePixelRatio;
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.vx * 2.2, d.y - d.len);
+      ctx.stroke();
+      if (d.y > h + 30) {
+        ripples.push({ x: d.x, y: h - (Math.random() * 30 * devicePixelRatio), r: 2 * devicePixelRatio, a: 0.35 });
+        drops.splice(drops.indexOf(d), 1);
+      }
+    }
+    // ripples
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const r = ripples[i];
+      r.r += 1.4 * devicePixelRatio;
+      r.a *= 0.94;
+      if (r.a < 0.02) { ripples.splice(i, 1); continue; }
+      ctx.strokeStyle = "rgba(99, 102, 241," + r.a + ")";
+      ctx.lineWidth = 1 * devicePixelRatio;
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+      ctx.stroke();
+    }
   }
+
+  /* ---- snow ---- */
+  function frameSnow() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < 2; i++) {
+      if (flakes.length < 90) {
+        flakes.push({
+          x: Math.random() * (w + 60) - 30,
+          y: Math.random() * -60 * devicePixelRatio,
+          vy: (0.6 + Math.random() * 1.1) * devicePixelRatio,
+          amp: (20 + Math.random() * 40) * devicePixelRatio,
+          phase: Math.random() * Math.PI * 2,
+          speed: (0.01 + Math.random() * 0.02),
+          r: (1.6 + Math.random() * 2.4) * devicePixelRatio,
+        });
+      }
+    }
+    for (const f of flakes) {
+      f.y += f.vy;
+      f.phase += f.speed;
+      f.x += Math.sin(f.phase) * 0.6 * devicePixelRatio;
+      if (f.y > h + 20) { f.y = -10 * devicePixelRatio; f.x = Math.random() * w; }
+      if (f.x < -30) f.x = w + 20;
+      if (f.x > w + 30) f.x = -20;
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(99, 102, 241, 0.35)";
+      ctx.fill();
+    }
+  }
+
+  const frames = { particles: frameParticles, rain: frameRain, snow: frameSnow };
+
+  function loop() {
+    if (frames[mode]) frames[mode]();
+    else ctx.clearRect(0, 0, w, h);
+    raf = requestAnimationFrame(loop);
+  }
+
+  function applyMode(m, persist) {
+    if (m !== "off" && !frames[m]) return;
+    mode = m;
+    drops = []; ripples = []; flakes = []; pts = [];
+    if (m === "particles") initParticles();
+    if (persist) localStorage.setItem("hh-bg", m);
+    document.querySelectorAll(".bg-btn").forEach((b) =>
+      b.classList.toggle("active", b.dataset.bg === m)
+    );
+  }
+
+  applyMode(mode, false);
+  loop();
+
+  document.querySelector("#bgControls").addEventListener("click", (e) => {
+    const btn = e.target.closest(".bg-btn");
+    if (btn) applyMode(btn.dataset.bg, true);
+  });
 })();
 
 /* ---------------- nav / mobile menu / reveal ---------------- */
@@ -747,7 +853,36 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   secs.forEach((s) => io.observe(s));
 })();
 
-/* ---------------- init ---------------- */
+/* ---------------- lightbox (click figure to zoom) ---------------- */
+(function lightbox() {
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  const lbClose = document.getElementById("lbClose");
+  if (!lb || !lbImg) return;
+
+  function open(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || "";
+    lb.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    lb.classList.remove("open");
+    document.body.style.overflow = "";
+    lbImg.src = "";
+  }
+  document.addEventListener("click", (e) => {
+    const img = e.target.closest(".pub-fig img");
+    if (img) {
+      open(img.currentSrc || img.src, img.alt);
+      return;
+    }
+    if (e.target === lb || e.target === lbClose) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+})();
 function init() {
   applyLang();
   animateCounts();
