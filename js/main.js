@@ -9,7 +9,10 @@ const I18N = {
   en: {
     "hero.welcome": "👋 Welcome to my homepage", "hero.subline": "Specializing in LLM post-training: SFT · RL · On-Policy Distillation",
     "nav.about": "About", "nav.research": "Research", "nav.publications": "Publications", "nav.contact": "Contact",
-    "hero.affil": "PhD Student · University of Science and Technology of China · Class of 2029",
+    "hero.affil": "University of Science and Technology of China",
+    "hero.advisor": "Advisor: Prof. Wanli Ouyang",
+    "hero.edu": "B.S. in Computer Science · Lanzhou University (2019–2023)",
+    "hero.news": "News",
     "hero.tag1": "LLM Post-Training", "hero.tag2": "SFT & PEFT", "hero.tag3": "RL & On-Policy Distillation",
     "hero.stat1": "Citations", "hero.stat2": "h-index", "hero.stat3": "i10-index", "hero.stat4": "Publications", "hero.stat5": "HF Downloads",
     "hero.cta1": "Google Scholar", "hero.cta2": "GitHub",
@@ -44,7 +47,10 @@ const I18N = {
   zh: {
     "hero.welcome": "👋 欢迎来到我的主页", "hero.subline": "专注于大模型后训练：SFT · RL · 在线蒸馏",
     "nav.about": "关于我", "nav.research": "研究方向", "nav.publications": "论文发表", "nav.contact": "联系",
-    "hero.affil": "中国科学技术大学 · 博士生（2029 年毕业）",
+    "hero.affil": "中国科学技术大学",
+    "hero.advisor": "导师：欧阳万里 教授",
+    "hero.edu": "本科：兰州大学 计算机科学与技术（2019–2023）",
+    "hero.news": "最新动态",
     "hero.tag1": "大模型后训练", "hero.tag2": "SFT 与 PEFT", "hero.tag3": "强化学习与在线蒸馏",
     "hero.stat1": "总引用", "hero.stat2": "h 指数", "hero.stat3": "i10 指数", "hero.stat4": "论文数", "hero.stat5": "HF 下载量",
     "hero.cta1": "谷歌学术", "hero.cta2": "GitHub",
@@ -740,6 +746,7 @@ function applyLang() {
   });
   renderPubs();
   renderHighlights();
+  initTicker();
   restartTyping();
 }
 
@@ -1154,11 +1161,14 @@ if (document.readyState !== "loading") {
 function initTicker() {
   const track = document.getElementById("tickerTrack");
   if (!track) return;
-  const chips = PAPERS.map((p) => p.venue);
-  chips.push("Google Scholar", "GitHub @hhnqqq", "Open Source", "LLM · PEFT · AI4Science");
-  const uniq = [...new Set(chips)];
-  const half = uniq
-    .map((v) => '<span class="ticker-chip"><span class="t-dot"></span>' + v + "</span>")
-    .join("");
-  track.innerHTML = half + half;
+  const NEWS = [
+    { href: "https://arxiv.org/abs/2608.14277", en: "SimpleOPD is now available on arXiv", zh: "SimpleOPD 已上线 arXiv" },
+    { href: "https://arxiv.org/abs/2606.30015", en: "Parametric Skills accepted by CBW @ COLM 2026", zh: "Parametric Skills 被 COLM 2026 CBW 接收" },
+    { href: "https://arxiv.org/abs/2607.21978", en: "MoE²-LoRA is now available on arXiv", zh: "MoE²-LoRA 已上线 arXiv" },
+  ];
+  const items = NEWS.map((n) =>
+    '<a class="ticker-chip" href="' + n.href + '" target="_blank" rel="noopener" aria-hidden="true"><span class="t-dot"></span>' +
+    n[lang] + "</a>"
+  ).join("");
+  track.innerHTML = items + items;
 }
