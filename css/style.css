@@ -712,8 +712,10 @@ body {
   object-position: center top;
   display: block;
   cursor: zoom-in;
-  transition: transform 0.5s ease;
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
+.pub-fig img.loaded { opacity: 1; }
 .pub:hover .pub-fig img { transform: scale(1.03); }
 .pub-fig .fig-zoom-hint {
   position: absolute;

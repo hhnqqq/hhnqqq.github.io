@@ -502,8 +502,8 @@ const FIG_MAP = {
   "A Unified Study of LoRA Variants: Taxonomy, Review, Codebase, and Empirical Evaluation": "LoRA-Variants.jpg",
   "SuperCLUE: A Comprehensive Chinese Large Language Model Benchmark": "SuperCLUE.jpg",
   "Scaling Physical Reasoning with the PHYSICS Dataset": "PHYSICS.jpg",
-  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.svg",
-  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.svg",
+  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.jpg",
+  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.jpg",
   "Gradient Intrinsic Dimensionality Alignment: Narrowing the Gap Between Low-Rank Adaptation and Full Fine-Tuning": "GIDA.jpg",
   "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing": "E2LoRA.jpg",
   "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future": "CI-Survey.svg",
@@ -675,7 +675,7 @@ function renderPubs(filter) {
       : "";
     const fig = FIG_MAP[p.title]
       ? '<div class="pub-fig"><img src="img/papers/' + FIG_MAP[p.title] +
-        '" alt="' + p.title + '" loading="lazy"><span class="fig-zoom-hint">🔍 ' +
+        '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\')"><span class="fig-zoom-hint">🔍 ' +
         (lang === "zh" ? "点击放大" : "Click to zoom") + '</span></div>'
       : "";
     const el = document.createElement("article");
@@ -721,6 +721,8 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
 
   let w, h, raf = null;
   let mode = localStorage.getItem("hh-bg") || "particles";
+  const isMobile = window.innerWidth < 768 || (navigator.deviceMemory && navigator.deviceMemory < 4);
+  if (isMobile) mode = "off"; // save memory/CPU on phones by default
   const ptColors = ["99,102,241", "6,182,212", "236,72,153"];
   let pts = [], drops = [], ripples = [], flakes = [];
 
