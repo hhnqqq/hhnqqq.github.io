@@ -506,13 +506,13 @@ const FIG_MAP = {
   "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.jpg",
   "Gradient Intrinsic Dimensionality Alignment: Narrowing the Gap Between Low-Rank Adaptation and Full Fine-Tuning": "GIDA.jpg",
   "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing": "E2LoRA.jpg",
-  "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future": "CI-Survey.svg",
+  "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future": "CI-Survey.jpg",
   "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent": "Agents-A1.jpg",
   "Control-R: Towards Controllable Test-Time Scaling": "Control-R.jpg",
   "MoE²-LoRA: When MoE Models Meet MoE-style Low-Rank Adaptation": "MoE2-LoRA.jpg",
   "ExoMind: Democratizing Scientific Intelligence via Extended-Mind-Inspired Agentic System": "ExoMind.jpg",
   "Parametric Skills": "Parametric-Skills.jpg",
-  "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": "Maize.svg",
+  "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": "Maize.jpg",
 };
 
 /* ---------------- Hugging Face download stats ---------------- */
