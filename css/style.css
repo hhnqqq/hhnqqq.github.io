@@ -349,6 +349,16 @@ body {
   line-height: 1.5;
 }
 .hero-meta-item { font-weight: 500; }
+.hero-meta-item a {
+  color: var(--accent1);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(99, 102, 241, 0.5);
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-meta-item a:hover {
+  color: var(--accent2);
+  border-bottom-color: var(--accent2);
+}
 
 .email-pill {
   display: inline-block;
@@ -477,15 +487,17 @@ body {
   transform: translateY(-3px);
 }
 
-/* floating news badges */
+/* floating news badges: drift across the hero from left to right */
 .float-news {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 .fn-badge {
   position: absolute;
+  left: 0;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -501,27 +513,20 @@ body {
   text-decoration: none;
   white-space: nowrap;
   pointer-events: auto;
-  animation: floatXY1 6s ease-in-out infinite;
+  animation: drift 15s linear infinite;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.fn-badge:nth-child(2) { animation-name: floatXY2; animation-delay: -2s; }
-.fn-badge:nth-child(3) { animation-name: floatXY3; animation-delay: -4s; }
+.fn-badge:nth-child(2) { animation-duration: 19s; animation-delay: -7s; }
+.fn-badge:nth-child(3) { animation-duration: 24s; animation-delay: -14s; }
 .fn-badge:hover {
   border-color: rgba(99, 102, 241, 0.5);
   box-shadow: 0 12px 34px rgba(99, 102, 241, 0.22);
+  animation-play-state: paused;
 }
 .fn-fire { font-size: 0.95rem; }
-@keyframes floatXY1 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(26px, -16px); }
-}
-@keyframes floatXY2 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-28px, -12px); }
-}
-@keyframes floatXY3 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(22px, -18px); }
+@keyframes drift {
+  0% { transform: translateX(-115vw); }
+  100% { transform: translateX(115vw); }
 }
 
 .scroll-hint {

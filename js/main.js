@@ -11,7 +11,7 @@ const I18N = {
     "nav.about": "About", "nav.research": "Research", "nav.publications": "Publications", "nav.contact": "Contact",
     "hero.affil": "University of Science and Technology of China",
     "hero.phd": "PhD Student (2023–2029)",
-    "hero.advisor": "Advisor: Prof. Wanli Ouyang",
+    "hero.advisor": 'Advisor: <a href="https://wlouyang.github.io/" target="_blank" rel="noopener">Prof. Wanli Ouyang</a>',
     "hero.edu": "B.S. in Computer Science · Lanzhou University (2019–2023)",
     "hero.news": "News",
     "hero.stat1": "Citations", "hero.stat2": "h-index", "hero.stat3": "i10-index", "hero.stat4": "Publications", "hero.stat5": "HF Downloads",
@@ -49,7 +49,7 @@ const I18N = {
     "nav.about": "关于我", "nav.research": "研究方向", "nav.publications": "论文发表", "nav.contact": "联系",
     "hero.affil": "中国科学技术大学",
     "hero.phd": "博士在读（2023–2029）",
-    "hero.advisor": "导师：欧阳万里 教授",
+    "hero.advisor": '导师：<a href="https://wlouyang.github.io/" target="_blank" rel="noopener">欧阳万里 教授</a>',
     "hero.edu": "本科：兰州大学 计算机科学与技术（2019–2023）",
     "hero.news": "最新动态",
     "hero.stat1": "总引用", "hero.stat2": "h 指数", "hero.stat3": "i10 指数", "hero.stat4": "论文数", "hero.stat5": "HF 下载量",
@@ -1167,9 +1167,9 @@ function initFloatNews() {
     { href: "https://arxiv.org/abs/2607.21978", en: "MoE²-LoRA is now on arXiv", zh: "MoE²-LoRA 已上线 arXiv" },
   ];
   const pos = [
-    { left: "5%", top: "30%" },
-    { right: "4%", top: "38%" },
-    { left: "8%", bottom: "22%" },
+    { top: "18%" },
+    { top: "46%" },
+    { top: "72%" },
   ];
   box.innerHTML = NEWS.map((n, i) =>
     '<a class="fn-badge" href="' + n.href + '" target="_blank" rel="noopener" style="' +
