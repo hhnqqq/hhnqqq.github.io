@@ -11,7 +11,7 @@ const I18N = {
     "nav.about": "About", "nav.research": "Research", "nav.publications": "Publications", "nav.contact": "Contact",
     "hero.affil": "University of Science and Technology of China (USTC)",
     "hero.tag1": "LLM Post-Training", "hero.tag2": "SFT & PEFT", "hero.tag3": "RL & On-Policy Distillation",
-    "hero.stat1": "Citations", "hero.stat2": "h-index", "hero.stat3": "i10-index", "hero.stat4": "Publications",
+    "hero.stat1": "Citations", "hero.stat2": "h-index", "hero.stat3": "i10-index", "hero.stat4": "Publications", "hero.stat5": "HF Downloads",
     "hero.cta1": "Google Scholar", "hero.cta2": "GitHub",
     roles: [
       "LLM Post-Training",
@@ -21,8 +21,9 @@ const I18N = {
       "AI for Science",
     ],
     "about.title": "About Me",
-    "about.p1": "I am a student at the <b>University of Science and Technology of China (USTC)</b>. My research centers on <b>LLM post-training</b> — the suite of techniques that transform base models into capable agents: <b>supervised fine-tuning (SFT)</b>, <b>reinforcement learning (RL)</b>, and <b>on-policy distillation (OPD)</b>. I attack post-training from two sides: making adaptation cheaper and more principled, and making models smarter at scientific reasoning.",
-    "about.p2": "On the SFT/PEFT side, I first-authored GoRA (NeurIPS 2025) and the LoRAFactory unified study, and co-led MoE²-LoRA and Parametric Skills. On the RL side, I contributed to P1 and P1-VL — physics-reasoning models with gold-medal performance at IPhO 2025 — plus the PHYSICS dataset. On the distillation side, I first-authored SimpleOPD, a tokenizer-agnostic on-policy distillation recipe that lifts Intern-S2-Preview by 21.2 points on ProofBench, surpassing Gemini-2.5-Pro.",
+    "about.p1": "I am a student at the <b>University of Science and Technology of China (USTC)</b>. My research centers on <b>LLM post-training</b> — the suite of techniques that transform base models into capable agents: <b>supervised fine-tuning (SFT)</b>, <b>reinforcement learning (RL)</b>, and <b>on-policy distillation (OPD)</b>. Across all three pillars, I care about two questions: how to make post-training <i>cheaper and more principled</i>, and how to make models <i>smarter at scientific reasoning</i> — ideally both at once.",
+    "about.p2": "<b>On the SFT/PEFT side</b>, I first-authored GoRA (NeurIPS 2025), a gradient-driven framework that adaptively allocates rank and initialization and beats vanilla LoRA by 5+ points on math reasoning; the LoRAFactory unified study, the first systematic taxonomy/codebase/empirical evaluation of LoRA variants; and I co-first-authored MoE²-LoRA and Parametric Skills, alongside contributions to GIDA and E²LoRA (both ICLR 2026).",
+    "about.p3": "<b>On the RL and distillation side</b>, I contributed to P1 and P1-VL — the first open-source models with gold-medal performance at IPhO 2025 — and co-developed the PHYSICS dataset and Control-R. I first-authored SimpleOPD, a tokenizer-agnostic on-policy distillation recipe that lifts Intern-S2-Preview by 21.2 points on ProofBench, surpassing Gemini-2.5-Pro. I also contributed to Agents-A1, a 35B agent reaching trillion-parameter-level performance, and ExoMind, an extended-mind-inspired scientific agentic system that beats frontier proprietary models across eight scientific benchmarks. Our open-sourced models have been downloaded <b>450K+ times on Hugging Face</b>.",
     "research.title": "Research Interests",
     "research.c1t": "Efficient SFT & PEFT", "research.c1d": "GoRA, E²LoRA, MoE²-LoRA, GIDA, Parametric Skills and the LoRAFactory unified study — principled, parameter-efficient fine-tuning that matches full fine-tuning at a fraction of the cost.",
     "research.c2t": "RL for Scientific Reasoning", "research.c2d": "P1, P1-VL and PHYSICS — reinforcement-learning pipelines that reach gold-medal-level performance on physics Olympiads and generalize to broader STEM reasoning.",
@@ -50,7 +51,7 @@ const I18N = {
     "nav.about": "关于我", "nav.research": "研究方向", "nav.publications": "论文发表", "nav.contact": "联系",
     "hero.affil": "中国科学技术大学 (USTC)",
     "hero.tag1": "大模型后训练", "hero.tag2": "SFT 与 PEFT", "hero.tag3": "强化学习与在线蒸馏",
-    "hero.stat1": "总引用", "hero.stat2": "h 指数", "hero.stat3": "i10 指数", "hero.stat4": "论文数",
+    "hero.stat1": "总引用", "hero.stat2": "h 指数", "hero.stat3": "i10 指数", "hero.stat4": "论文数", "hero.stat5": "HF 下载量",
     "hero.cta1": "谷歌学术", "hero.cta2": "GitHub",
     roles: [
       "大模型后训练",
@@ -60,8 +61,9 @@ const I18N = {
       "AI for Science",
     ],
     "about.title": "关于我",
-    "about.p1": "我是<b>中国科学技术大学</b>的学生，研究方向聚焦<b>大模型后训练 (LLM Post-Training)</b>——把基座模型锤炼为能干推理者的整套技术：<b>监督微调 (SFT)</b>、<b>强化学习 (RL)</b> 与<b>在线蒸馏 (OPD)</b>。我从两面攻打：让模型适配更便宜、更有原理，也让模型的科学推理更强。",
-    "about.p2": "SFT/PEFT 一侧：一作 GoRA (NeurIPS 2025) 与 LoRAFactory 统一研究，共一兼项目负责人 MoE²-LoRA 与 Parametric Skills；RL 一侧：参与 P1 与 P1-VL——IPhO 2025 金牌级表现的物理推理模型，以及 PHYSICS 数据集；蒸馏一侧：一作 SimpleOPD，一种与分词器无关的在线蒸馏方法，把 Intern-S2-Preview 在 ProofBench 上提升 21.2 分、超越 Gemini-2.5-Pro。",
+    "about.p1": "我是<b>中国科学技术大学</b>的学生，研究方向聚焦<b>大模型后训练 (LLM Post-Training)</b>——把基座模型锤炼为能干推理者的整套技术：<b>监督微调 (SFT)</b>、<b>强化学习 (RL)</b> 与<b>在线蒸馏 (OPD)</b>。在三大支柱里我只关心两个问题：如何让后训练<b>更便宜、更有原理</b>，以及如何让模型<b>更擅长科学推理</b>——最好两者兼得。",
+    "about.p2": "<b>SFT / PEFT 一侧</b>：一作完成 GoRA (NeurIPS 2025)——基于梯度信号自适应分配秩与初始化的框架，数学推理较标准 LoRA 提升 5+ 分；以及 LoRAFactory 统一研究——首个系统化的 LoRA 变体分类学/代码库/大规模评测；并共一完成 MoE²-LoRA 与 Parametric Skills，参与 GIDA 与 E²LoRA（均被 ICLR 2026 接收）。",
+    "about.p3": "<b>RL 与蒸馏一侧</b>：参与 P1 与 P1-VL——IPhO 2025 金牌级表现的首批开源模型，以及 PHYSICS 数据集与 Control-R；一作完成 SimpleOPD——一种与分词器无关的在线蒸馏方法，把 Intern-S2-Preview 在 ProofBench 上提升 21.2 分、超越 Gemini-2.5-Pro；还参与以 35B 参数达到万亿参数级性能的 Agents-A1，以及以延展心智启发的科学智能体系统 ExoMind——在八项科学基准上超越闭源前沿模型。我们的开源模型在 Hugging Face 上已被下载 <b>45 万+ 次</b>。",
     "research.title": "研究方向",
     "research.c1t": "高效 SFT 与 PEFT", "research.c1d": "GoRA、E²LoRA、MoE²-LoRA、GIDA、Parametric Skills 与 LoRAFactory 统一研究——以一小部分成本追平全量微调的参数高效微调。",
     "research.c2t": "科学推理强化学习", "research.c2d": "P1、P1-VL 与 PHYSICS——把物理奥赛能力推进到金牌级、并泛化到更广泛 STEM 推理的强化学习流水线。",
@@ -418,7 +420,37 @@ const PAPERS = [
       ],
     },
   },
-{
+  {
+    title: "ExoMind: Democratizing Scientific Intelligence via Extended-Mind-Inspired Agentic System",
+    authors: ["P. Ye", "Z. Liu", "J. Ye", "F. Yu", "S. Tang", "Y. Jiang", "H. He", "Z. Cao", "T. Chen", "B. Zhang", "et al."],
+    venue: "Tech Report 2026", venueClass: "arxiv", year: 2026, cites: 0, roles: [],
+    cat: "rl",
+    links: [
+      { type: "paper", href: "https://github.com/AI4SGI/ExoMind/blob/main/Paper.pdf" },
+      { type: "code", href: "https://github.com/AI4SGI/ExoMind" },
+      { type: "project", href: "https://ai4sgi.github.io/ExoMind/" },
+    ],
+    note: { en: "Extended-mind-inspired agentic system for science — 8-benchmark average 36.2 → 67.5, surpassing frontier proprietary models with a 35B-A3B model.", zh: "受延展心智启发的科学智能体系统——8 项科学基准平均分从 36.2 提升到 67.5，以 35B-A3B 小模型超越闭源前沿模型。" },
+    hl: {
+      en: [
+        "First extended-mind-inspired agentic system for scientific domains",
+        "Training-value-aware data engineering: 60K problem pool filtered to ~30K challenging, routed problems",
+        "Deeply specialized scientific interaction: source discovery, grounding, executable verification, observation integration as typed objects",
+        "Two-stage hybrid Chain-of-Interaction training with training-inference consistency",
+        "Qwen3.5-35B-A3B + few thousand trajectories + 1-2 days of SFT on 8×H200 → 67.5 avg across 8 scientific benchmarks, besting Claude/GPT/Gemini/DeepSeek",
+        "Improves all six general-capability benchmarks over the base model",
+      ],
+      zh: [
+        "首个面向科学领域的受延展心智启发的智能体系统",
+        "训练价值感知的数据工程：6 万题池过滤到约 3 万道难题并路由",
+        "深度专业化的科学交互：来源发现、溯源、可执行验证、观测整合抽象为类型化交互对象",
+        "两阶段混合 Chain-of-Interaction 训练，训练-推理一致性约束",
+        "Qwen3.5-35B-A3B + 数千条轨迹 + 8×H200 训练 1-2 天 → 8 项科学基准平均 67.5，超越 Claude/GPT/Gemini/DeepSeek",
+        "在全部 6 项通用能力基准上相对基座模型全面提升",
+      ],
+    },
+  },
+  {
     title: "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model",
     authors: ["J. Zou", "L. Chen", "H. He", "Y. Yuan"],
     venue: "Trans. CSAE 42(5)", venueClass: "arxiv", year: 2026, cites: 0, roles: [],
@@ -478,9 +510,85 @@ const FIG_MAP = {
   "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent": "Agents-A1.jpg",
   "Control-R: Towards Controllable Test-Time Scaling": "Control-R.jpg",
   "MoE²-LoRA: When MoE Models Meet MoE-style Low-Rank Adaptation": "MoE2-LoRA.jpg",
+  "ExoMind: Democratizing Scientific Intelligence via Extended-Mind-Inspired Agentic System": "ExoMind.jpg",
   "Parametric Skills": "Parametric-Skills.jpg",
   "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": "Maize.svg",
 };
+
+/* ---------------- Hugging Face download stats ---------------- */
+const HF_MODELS = {
+  "P1: Mastering Physics Olympiads with Reinforcement Learning": [
+    "PRIME-RL/P1-235B-A22B", "PRIME-RL/P1-30B-A3B",
+  ],
+  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": [
+    "PRIME-RL/P1-VL-235B-A22B", "PRIME-RL/P1-VL-30B-A3B",
+  ],
+  "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent": [
+    "InternScience/Agents-A1", "InternScience/Agents-A1-4B", "InternScience/Agents-A1-Q4_K_M-GGUF",
+    "InternScience/Agents-A1-4B-Q4_K_M-GGUF", "InternScience/Agents-A1-FP8", "InternScience/Agents-A1-F16-GGUF",
+    "InternScience/Agents-A1-Q8_0-GGUF", "InternScience/Agents-A1-4B-F16-GGUF", "InternScience/Agents-A1-4B-Q8_0-GGUF",
+  ],
+  "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning": [
+    "bingyang-lei/Qwen3.5-35B-A3B-SimpleOPD", "bingyang-lei/Intern-S2-Preview-SimpleOPD",
+  ],
+  "ExoMind: Democratizing Scientific Intelligence via Extended-Mind-Inspired Agentic System": [
+    "AI4SGI/ExoMind", "AI4SGI/ExoMind-9B",
+  ],
+};
+
+(function hfDownloads() {
+  const CACHE_KEY = "hh-hf-v1";
+  const CACHE_TTL = 6 * 3600 * 1000;
+  const fmtNum = (n) =>
+    n >= 1e6 ? (n / 1e6).toFixed(1) + "M"
+    : n >= 1e3 ? Math.round(n / 1e3) + "K"
+    : String(n);
+
+  let totals = {};
+  let loaded = false;
+
+  function render() {
+    const sum = Object.values(totals).reduce((a, b) => a + b, 0);
+    const heroEl = document.getElementById("hfDownloads");
+    if (heroEl) heroEl.textContent = loaded ? fmtNum(sum) : "…";
+    for (const [title, mids] of Object.entries(HF_MODELS)) {
+      const sub = mids.reduce((a, id) => a + (totals[id] || 0), 0);
+      const card = [...document.querySelectorAll(".pub")].find((el) =>
+        el.querySelector(".pub-title")?.textContent === title
+      );
+      if (!card || card.querySelector(".hf-badge")) continue;
+      const badge = document.createElement("a");
+      badge.className = "hf-badge";
+      badge.href = "https://huggingface.co/" + mids[0];
+      badge.target = "_blank";
+      badge.rel = "noopener";
+      badge.textContent = "🤗 " + (loaded ? fmtNum(sub) : "…");
+      card.querySelector(".pub-head").appendChild(badge);
+    }
+  }
+
+  // cached totals first
+  try {
+    const c = JSON.parse(localStorage.getItem(CACHE_KEY));
+    if (c && Date.now() - c.ts < CACHE_TTL && c.data) {
+      totals = c.data;
+      render();
+    }
+  } catch (e) {}
+
+  const ids = [...new Set(Object.values(HF_MODELS).flat())];
+  Promise.allSettled(
+    ids.map((id) =>
+      fetch("https://huggingface.co/api/models/" + id, { signal: AbortSignal.timeout(8000) })
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+        .then((j) => { totals[id] = j.downloads || 0; })
+    )
+  ).then(() => {
+    loaded = true;
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: totals })); } catch (e) {}
+    render();
+  });
+})();
 
 /* ---------------- state ---------------- */
 let lang = localStorage.getItem("hh-lang") || "en";
