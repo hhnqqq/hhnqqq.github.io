@@ -576,6 +576,11 @@ function renderHighlights() {
       if (card) card.classList.toggle("open");
     });
   }
+  // equal heights while collapsed: tallest card sets the height for all
+  const cards = [...grid.querySelectorAll(".hl-card")];
+  cards.forEach((c) => (c.style.minHeight = ""));
+  const h = Math.max(...cards.map((c) => c.offsetHeight));
+  cards.forEach((c) => (c.style.minHeight = h + "px"));
 }
 
 const SCHOLAR_CITES = {

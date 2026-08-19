@@ -571,7 +571,7 @@ body {
 .card p { color: var(--text-dim); font-size: 0.9rem; }
 
 /* ---------- highlights ---------- */
-.hl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start; }
+.hl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .hl-card {
   display: flex;
   flex-direction: column;
@@ -584,6 +584,7 @@ body {
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
   cursor: pointer;
+  min-width: 0;
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 .hl-card:hover {
@@ -616,7 +617,7 @@ body {
   padding: 4px 11px;
   border-radius: 99px;
 }
-.hl-card h3 { font-size: 1rem; font-weight: 700; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hl-card h3 { font-size: 1rem; font-weight: 700; line-height: 1.35; overflow-wrap: break-word; }
 .hl-card p { color: var(--text-dim); font-size: 0.88rem; flex: 1; }
 .hl-head { display: flex; align-items: center; gap: 9px; padding-right: 26px; }
 .hl-icon { font-size: 1.2rem; flex: none; }
@@ -640,13 +641,6 @@ body {
   font-size: 0.85rem;
   line-height: 1.6;
   margin: 0;
-}
-.hl-card:not(.open) .hl-desc {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 4.8em;
 }
 .hl-list {
   display: grid;
