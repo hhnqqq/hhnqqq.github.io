@@ -571,7 +571,7 @@ body {
 .card p { color: var(--text-dim); font-size: 0.9rem; }
 
 /* ---------- highlights ---------- */
-.hl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch; }
+.hl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start; }
 .hl-card {
   display: flex;
   flex-direction: column;
