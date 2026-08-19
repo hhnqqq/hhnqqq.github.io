@@ -536,6 +536,12 @@ const FIG_RATIO = {
   "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": 2.71,
 };
 
+/* high-resolution original for the lightbox (SVG = lossless original) */
+const FIG_FULL = {
+  "P1: Mastering Physics Olympiads with Reinforcement Learning": "P1.svg",
+  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": "P1-VL.svg",
+};
+
 /* ---------------- Hugging Face download stats ---------------- */
 const HF_MODELS = {
   "P1: Mastering Physics Olympiads with Reinforcement Learning": [
@@ -696,7 +702,9 @@ function renderPubs(filter) {
       : "";
     const fig = FIG_MAP[p.title]
       ? '<div class="pub-fig" style="aspect-ratio:' + (FIG_RATIO[p.title] || 1.6) + '"><img src="img/papers/' + FIG_MAP[p.title] +
-        '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\')"><span class="fig-zoom-hint">🔍 ' +
+        '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\')"' +
+        (FIG_FULL[p.title] ? ' data-full="img/papers/' + FIG_FULL[p.title] + '"' : "") +
+        '><span class="fig-zoom-hint">🔍 ' +
         (lang === "zh" ? "点击放大" : "Click to zoom") + '</span></div>'
       : "";
     const el = document.createElement("article");
@@ -704,14 +712,14 @@ function renderPubs(filter) {
     el.dataset.cat = p.cat;
     el.style.animationDelay = (idx * 0.05) + "s";
     el.innerHTML =
+      '<div class="pub-head">' +
+        '<span class="pub-title">' + p.title + '</span>' +
+        '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
+        badges +
+        '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
+      '</div>' +
       fig +
       '<div class="pub-body">' +
-        '<div class="pub-head">' +
-          '<span class="pub-title">' + p.title + '</span>' +
-          '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
-          badges +
-          '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
-        '</div>' +
         '<div class="pub-authors">' + authors + '</div>' +
         '<div class="pub-note">' + p.note[lang] + '</div>' +
         hl +
@@ -1016,7 +1024,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document.addEventListener("click", (e) => {
     const img = e.target.closest(".pub-fig img");
     if (img) {
-      open(img.currentSrc || img.src, img.alt);
+      open(img.dataset.full || img.currentSrc || img.src, img.alt);
       return;
     }
     if (e.target === lb || e.target === lbClose) close();
