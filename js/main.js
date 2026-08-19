@@ -9,19 +9,19 @@ const I18N = {
   en: {
     "hero.welcome": "👋 Welcome to my homepage", "hero.subline": "Specializing in LLM post-training: SFT · RL · On-Policy Distillation",
     "nav.about": "About", "nav.research": "Research", "nav.publications": "Publications", "nav.contact": "Contact",
-    "hero.affil": "University of Science and Technology of China (USTC)",
+    "hero.affil": "PhD Student · University of Science and Technology of China · Class of 2029",
     "hero.tag1": "LLM Post-Training", "hero.tag2": "SFT & PEFT", "hero.tag3": "RL & On-Policy Distillation",
     "hero.stat1": "Citations", "hero.stat2": "h-index", "hero.stat3": "i10-index", "hero.stat4": "Publications", "hero.stat5": "HF Downloads",
     "hero.cta1": "Google Scholar", "hero.cta2": "GitHub",
     roles: [
+      "PhD Student @ USTC · Class of 2029",
       "LLM Post-Training",
       "SFT & Parameter-Efficient Fine-Tuning",
       "Reinforcement Learning for Reasoning",
       "On-Policy Distillation",
-      "AI for Science",
     ],
     "about.title": "About Me",
-    "about.p1": "I am a student at the <b>University of Science and Technology of China (USTC)</b>. My research centers on <b>LLM post-training</b> — the suite of techniques that transform base models into capable agents: <b>supervised fine-tuning (SFT)</b>, <b>reinforcement learning (RL)</b>, and <b>on-policy distillation (OPD)</b>. Across all three pillars, I care about two questions: how to make post-training <i>cheaper and more principled</i>, and how to make models <i>smarter at scientific reasoning</i> — ideally both at once.",
+    "about.p1": "I am a <b>PhD student at the University of Science and Technology of China (USTC)</b>, expected to graduate in <b>2029</b>. My research centers on <b>LLM post-training</b> — the suite of techniques that transform base models into capable agents: <b>supervised fine-tuning (SFT)</b>, <b>reinforcement learning (RL)</b>, and <b>on-policy distillation (OPD)</b>. Across all three pillars, I care about two questions: how to make post-training <i>cheaper and more principled</i>, and how to make models <i>smarter at scientific reasoning</i> — ideally both at once.",
     "about.p2": "<b>On the SFT/PEFT side</b>, I first-authored GoRA (NeurIPS 2025), a gradient-driven framework that adaptively allocates rank and initialization and beats vanilla LoRA by 5+ points on math reasoning; the LoRAFactory unified study, the first systematic taxonomy/codebase/empirical evaluation of LoRA variants; and I co-first-authored MoE²-LoRA and Parametric Skills, alongside contributions to GIDA and E²LoRA (both ICLR 2026).",
     "about.p3": "<b>On the RL and distillation side</b>, I contributed to P1 and P1-VL — the first open-source models with gold-medal performance at IPhO 2025 — and co-developed the PHYSICS dataset and Control-R. I first-authored SimpleOPD, a tokenizer-agnostic on-policy distillation recipe that lifts Intern-S2-Preview by 21.2 points on ProofBench, surpassing Gemini-2.5-Pro. I also contributed to Agents-A1, a 35B agent reaching trillion-parameter-level performance, and ExoMind, an extended-mind-inspired scientific agentic system that beats frontier proprietary models across eight scientific benchmarks. Our open-sourced models have been downloaded <b>450K+ times on Hugging Face</b>.",
     "research.title": "Research Interests",
@@ -30,10 +30,6 @@ const I18N = {
     "research.c3t": "On-Policy Distillation", "research.c3d": "SimpleOPD and Agents-A1 — distilling long-context teacher reasoning into compact students across tokenizers, model families and horizons.",
     "research.c4t": "AI for Science", "research.c4d": "Datasets and benchmarks that power post-training for science: Biology-Instructions, PHYSICS, and physics-Olympiad evaluation.",
     "hl.title": "Research Highlights",
-    "hl.opd": "First-author. Distills long-context proof reasoning (SU-01) into short-context students — Intern-S2-Preview +21.2 on ProofBench, surpassing Gemini-2.5-Pro.",
-    "hl.gora": "First-author. A unified framework that adapts both rank and initialization using gradient information — outperforming vanilla LoRA by 5+ points on math reasoning.",
-    "hl.bio": "First-author. The first large-scale instruction-tuning dataset and benchmark for multi-omics sequence understanding of LLMs, powering the ChatMultiOmics baseline.",
-    "hl.p1": "First open-source model with gold-medal performance at IPhO 2025, winning 12 of 13 international physics competitions.",
     "pub.title": "Publications",
     "pub.fAll": "All", "pub.fPeft": "SFT & PEFT", "pub.fRl": "RL & Distillation", "pub.fBench": "Datasets & Benchmarks",
     "contact.title": "Contact",
@@ -49,19 +45,19 @@ const I18N = {
   zh: {
     "hero.welcome": "👋 欢迎来到我的主页", "hero.subline": "专注于大模型后训练：SFT · RL · 在线蒸馏",
     "nav.about": "关于我", "nav.research": "研究方向", "nav.publications": "论文发表", "nav.contact": "联系",
-    "hero.affil": "中国科学技术大学 (USTC)",
+    "hero.affil": "中国科学技术大学 · 博士生（2029 年毕业）",
     "hero.tag1": "大模型后训练", "hero.tag2": "SFT 与 PEFT", "hero.tag3": "强化学习与在线蒸馏",
     "hero.stat1": "总引用", "hero.stat2": "h 指数", "hero.stat3": "i10 指数", "hero.stat4": "论文数", "hero.stat5": "HF 下载量",
     "hero.cta1": "谷歌学术", "hero.cta2": "GitHub",
     roles: [
+      "中科大博士生 · 2029 年毕业",
       "大模型后训练",
       "SFT 与参数高效微调",
       "用强化学习做科学推理",
       "在线蒸馏 (OPD)",
-      "AI for Science",
     ],
     "about.title": "关于我",
-    "about.p1": "我是<b>中国科学技术大学</b>的学生，主要研究方向是<b>大模型后训练 (LLM Post-Training)</b>——把基座模型变成真正会推理、能落地的模型的那一套技术，包括<b>监督微调 (SFT)</b>、<b>强化学习 (RL)</b> 和<b>在线蒸馏 (OPD)</b>。我关心的始终是两件事：后训练怎么做得<b>更高效、更有依据</b>，模型怎么<b>更会科学推理</b>——最好两全其美。",
+    "about.p1": "我是<b>中国科学技术大学</b>的博士生，预计 <b>2029</b> 年毕业。主要研究方向是<b>大模型后训练 (LLM Post-Training)</b>——把基座模型变成真正会推理、能落地的模型的那一套技术，包括<b>监督微调 (SFT)</b>、<b>强化学习 (RL)</b> 和<b>在线蒸馏 (OPD)</b>。我关心的始终是两件事：后训练怎么做得<b>更高效、更有依据</b>，模型怎么<b>更会科学推理</b>——最好两全其美。",
     "about.p2": "<b>SFT / PEFT 这边</b>：第一作者发表了 GoRA (NeurIPS 2025)，用训练中的梯度信息同时决定秩的大小和初始化方式，数学推理上比标准 LoRA 高出 5 分以上；又做了 LoRAFactory 统一研究，给 LoRA 变体补上了第一套系统的分类、代码库和大规模评测；MoE²-LoRA 和 Parametric Skills 是共同一作兼项目负责人，GIDA、E²LoRA 也有参与（两篇都被 ICLR 2026 接收）。",
     "about.p3": "<b>RL 和蒸馏这边</b>：参与了 P1 和 P1-VL——首批在 IPhO 2025 拿到金牌表现的开源模型，也做了 PHYSICS 数据集和 Control-R；第一作者发表了 SimpleOPD，一种不用对齐分词器的在线蒸馏方法，把 Intern-S2-Preview 在 ProofBench 上抬高了 21.2 分，超过 Gemini-2.5-Pro；还参与了 Agents-A1（35B 参数、性能比肩万亿参数模型）和 ExoMind（受延展心智启发的科学智能体系统，八项科学基准全面超过闭源模型）。这些开源模型在 Hugging Face 上累计被下载了 <b>45 万+ 次</b>。",
     "research.title": "研究方向",
@@ -70,10 +66,6 @@ const I18N = {
     "research.c3t": "在线蒸馏 (OPD)", "research.c3d": "把长上下文教师的推理能力蒸馏到小模型里，不用对齐分词器、不受模型家族限制：SimpleOPD、Agents-A1。",
     "research.c4t": "AI for Science", "research.c4d": "面向科学场景的数据集和评测体系：Biology-Instructions、PHYSICS、物理奥赛基准等。",
     "hl.title": "研究亮点",
-    "hl.opd": "第一作者。把长上下文教师的证明推理蒸馏到短上下文学生模型——Intern-S2-Preview 在 ProofBench 上提升 21.2 分，超过 Gemini-2.5-Pro。",
-    "hl.gora": "第一作者。用梯度信息在一个框架里同时调整秩和初始化，数学推理上超过标准 LoRA 5 分以上。",
-    "hl.bio": "第一作者。首个大规模多组学序列理解指令数据集与基准，还配套做了 ChatMultiOmics 基线模型。",
-    "hl.p1": "首个在 IPhO 2025 拿到金牌表现的开源模型，13 项国际物理竞赛中拿下 12 枚金牌。",
     "pub.title": "论文发表",
     "pub.fAll": "全部", "pub.fPeft": "SFT 与 PEFT", "pub.fRl": "RL 与蒸馏", "pub.fBench": "数据集与基准",
     "contact.title": "联系我",
@@ -470,6 +462,97 @@ const PAPERS = [
   },
 ];
 
+/* ---------------- research highlights (all publications, best bits) ---------------- */
+const HIGHLIGHTS = [
+  {
+    icon: "⚡", cat: "peft",
+    title: { en: "Efficient SFT & PEFT", zh: "高效 SFT 与 PEFT" },
+    items: [
+      { name: "GoRA", href: "https://arxiv.org/abs/2502.12171",
+        en: "First-author (NeurIPS 2025) · +5.13 on math reasoning, beats full fine-tuning at high ranks",
+        zh: "一作（NeurIPS 2025）· 数学推理 +5.13，高秩下超过全量微调" },
+      { name: "LoRA Variants Study", href: "https://arxiv.org/abs/2601.22708",
+        en: "First-author · first unified taxonomy, LoRAFactory codebase & large-scale evaluation",
+        zh: "一作 · 首个统一分类体系、LoRAFactory 代码库与大规模评测" },
+      { name: "MoE²-LoRA", href: "https://arxiv.org/abs/2607.21978",
+        en: "Co-first & lead · first MoE-style LoRA for MoE models, SOTA downstream accuracy",
+        zh: "共一兼负责人 · 首个给 MoE 模型做 MoE 风格低秩适配，SOTA 下游精度" },
+      { name: "GIDA · E²LoRA", href: "https://openreview.net/search?term=Gradient+Intrinsic+Dimensionality",
+        en: "ICLR 2026 · closing the gap between LoRA and full fine-tuning",
+        zh: "ICLR 2026 · 缩小 LoRA 与全量微调的差距" },
+      { name: "Parametric Skills", href: "https://arxiv.org/abs/2606.30015",
+        en: "Co-first & lead (COLM 2026) · reusable parametric skills for continual adaptation",
+        zh: "共一兼负责人（COLM 2026）· 可复用的参数化技能" },
+    ],
+  },
+  {
+    icon: "🧠", cat: "rl",
+    title: { en: "RL for Scientific Reasoning", zh: "科学推理强化学习" },
+    items: [
+      { name: "P1", href: "https://arxiv.org/abs/2511.13612",
+        en: "First open-source gold medal at IPhO 2025 · 12 golds out of 13 competitions",
+        zh: "首个在 IPhO 2025 拿金牌的开源模型 · 13 项竞赛 12 金" },
+      { name: "P1-VL", href: "https://arxiv.org/abs/2602.09443",
+        en: "First open-source VLM with 12 golds on HiPhO · No.2 globally, behind only Gemini-3-Pro",
+        zh: "首个在 HiPhO 拿 12 金的开源多模态模型 · 全球第 2，仅次于 Gemini-3-Pro" },
+      { name: "PHYSICS Dataset", href: "https://arxiv.org/abs/2506.00022",
+        en: "NeurIPS 2025 · 16,568 curated problems across 5 domains, high-school to graduate level",
+        zh: "NeurIPS 2025 · 16,568 道精选题，5 大领域，高中到研究生难度" },
+      { name: "Control-R", href: "https://arxiv.org/abs/2506.00189",
+        en: "Controllable test-time scaling · SOTA at 32B on AIME2024 / MATH500",
+        zh: "可控测试时扩展 · 32B 规模 AIME2024 / MATH500 达到 SOTA" },
+    ],
+  },
+  {
+    icon: "🔁", cat: "rl",
+    title: { en: "On-Policy Distillation", zh: "在线蒸馏 (OPD)" },
+    items: [
+      { name: "SimpleOPD", href: "https://arxiv.org/abs/2608.14277",
+        en: "First-author · +21.2 on ProofBench, surpassing Gemini-2.5-Pro (Intern-S2-Preview)",
+        zh: "一作 · ProofBench +21.2 分，超过 Gemini-2.5-Pro（Intern-S2-Preview）" },
+      { name: "Agents-A1", href: "https://arxiv.org/abs/2606.30616",
+        en: "35B MoE agent reaching trillion-parameter-level performance · 450K+ HF downloads",
+        zh: "35B 智能体达到万亿参数级性能 · Hugging Face 下载 45 万+" },
+    ],
+  },
+  {
+    icon: "🧬", cat: "bench",
+    title: { en: "Datasets & AI for Science", zh: "数据集与 AI for Science" },
+    items: [
+      { name: "ExoMind", href: "https://github.com/AI4SGI/ExoMind",
+        en: "8-benchmark average 36.2 → 67.5, beating Claude / GPT / Gemini / DeepSeek with a 35B model",
+        zh: "8 项科学基准平均 36.2 → 67.5，35B 模型打败 Claude / GPT / Gemini / DeepSeek" },
+      { name: "Biology-Instructions", href: "https://arxiv.org/abs/2412.19191",
+        en: "First-author (EMNLP 2025 Findings) · first multi-omics instruction dataset for LLMs",
+        zh: "一作（EMNLP 2025 Findings）· 首个 LLM 多组学指令数据集" },
+      { name: "SuperCLUE", href: "https://arxiv.org/abs/2307.15020",
+        en: "Chinese LLM benchmark with 108+ citations",
+        zh: "中文大模型基准，被引用 108+ 次" },
+      { name: "CI Survey · Maize", href: "https://github.com/AI4SGI",
+        en: "LLM collective-intelligence survey · maize knowledge-graph QA (Trans. CSAE)",
+        zh: "LLM 群体智能综述 · 玉米知识图谱问答（农业工程学报）" },
+    ],
+  },
+];
+
+function renderHighlights() {
+  const grid = document.getElementById("hlGrid");
+  if (!grid) return;
+  const t = I18N[lang];
+  grid.innerHTML = HIGHLIGHTS.map((g, gi) =>
+    '<div class="hl-card hl-card-' + g.cat + '">' +
+      '<div class="hl-num">' + String(gi + 1).padStart(2, "0") + "</div>" +
+      '<div class="hl-head"><span class="hl-icon">' + g.icon + "</span><h3>" + g.title[lang] + "</h3></div>" +
+      '<ul class="hl-list">' +
+        g.items.map((it) =>
+          '<li><a href="' + it.href + '" target="_blank" rel="noopener"><b>' + it.name + "</b> — " +
+          it[lang] + "</a></li>"
+        ).join("") +
+      "</ul>" +
+    "</div>"
+  ).join("");
+}
+
 const SCHOLAR_CITES = {
   "GoRA: Gradient-driven Adaptive Low Rank Adaptation": "2osOgNQ5qMEC",
   "Biology-Instructions: A Dataset and Benchmark for Multi-Omics Sequence Understanding Capability of Large Language Models": "9yKSN-GCB0IC",
@@ -626,6 +709,7 @@ function applyLang() {
       el.innerHTML = txt.indexOf("{y}") > -1 ? txt.replace("{y}", new Date().getFullYear()) : txt;
   });
   renderPubs();
+  renderHighlights();
   restartTyping();
 }
 

@@ -617,6 +617,21 @@ body {
 }
 .hl-card h3 { font-size: 1.08rem; font-weight: 700; line-height: 1.4; }
 .hl-card p { color: var(--text-dim); font-size: 0.88rem; flex: 1; }
+.hl-head { display: flex; align-items: center; gap: 10px; }
+.hl-icon { font-size: 1.3rem; }
+.hl-list { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 9px; }
+.hl-list li { position: relative; padding-left: 14px; }
+.hl-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+}
+.hl-list a { color: var(--text-dim); font-size: 0.85rem; line-height: 1.55; text-decoration: none; transition: color 0.2s; }
+.hl-list a:hover { color: var(--accent1); }
+.hl-list b { color: var(--text); font-weight: 700; }
 .hl-foot { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-dim); border-top: 1px dashed rgba(15,23,42,0.12); padding-top: 10px; font-weight: 600; }
 .hl-foot span:first-child { color: #d97706; }
 .hl-cites { font-family: var(--mono); color: #0e7490; }
