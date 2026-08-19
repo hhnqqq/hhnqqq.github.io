@@ -24,12 +24,11 @@ const I18N = {
     "about.p1": "I am a <b>PhD student at the University of Science and Technology of China (USTC)</b>, expected to graduate in <b>2029</b>. My research centers on <b>LLM post-training</b> — the suite of techniques that transform base models into capable agents: <b>supervised fine-tuning (SFT)</b>, <b>reinforcement learning (RL)</b>, and <b>on-policy distillation (OPD)</b>. Across all three pillars, I care about two questions: how to make post-training <i>cheaper and more principled</i>, and how to make models <i>smarter at scientific reasoning</i> — ideally both at once.",
     "about.p2": "<b>On the SFT/PEFT side</b>, I first-authored GoRA (NeurIPS 2025), a gradient-driven framework that adaptively allocates rank and initialization and beats vanilla LoRA by 5+ points on math reasoning; the LoRAFactory unified study, the first systematic taxonomy/codebase/empirical evaluation of LoRA variants; and I co-first-authored MoE²-LoRA and Parametric Skills, alongside contributions to GIDA and E²LoRA (both ICLR 2026).",
     "about.p3": "<b>On the RL and distillation side</b>, I contributed to P1 and P1-VL — the first open-source models with gold-medal performance at IPhO 2025 — and co-developed the PHYSICS dataset and Control-R. I first-authored SimpleOPD, a tokenizer-agnostic on-policy distillation recipe that lifts Intern-S2-Preview by 21.2 points on ProofBench, surpassing Gemini-2.5-Pro. I also contributed to Agents-A1, a 35B agent reaching trillion-parameter-level performance, and ExoMind, an extended-mind-inspired scientific agentic system that beats frontier proprietary models across eight scientific benchmarks. Our open-sourced models have been downloaded <b>450K+ times on Hugging Face</b>.",
-    "research.title": "Research Interests",
+    "research.title": "Research & Highlights",
     "research.c1t": "Efficient SFT & PEFT", "research.c1d": "GoRA, E²LoRA, MoE²-LoRA, GIDA, Parametric Skills and the LoRAFactory unified study — principled, parameter-efficient fine-tuning that matches full fine-tuning at a fraction of the cost.",
     "research.c2t": "RL for Scientific Reasoning", "research.c2d": "P1, P1-VL and PHYSICS — reinforcement-learning pipelines that reach gold-medal-level performance on physics Olympiads and generalize to broader STEM reasoning.",
     "research.c3t": "On-Policy Distillation", "research.c3d": "SimpleOPD and Agents-A1 — distilling long-context teacher reasoning into compact students across tokenizers, model families and horizons.",
     "research.c4t": "AI for Science", "research.c4d": "Datasets and benchmarks that power post-training for science: Biology-Instructions, PHYSICS, and physics-Olympiad evaluation.",
-    "hl.title": "Research Highlights",
     "pub.title": "Publications",
     "pub.fAll": "All", "pub.fPeft": "SFT & PEFT", "pub.fRl": "RL & Distillation", "pub.fBench": "Datasets & Benchmarks",
     "contact.title": "Contact",
@@ -60,12 +59,11 @@ const I18N = {
     "about.p1": "我是<b>中国科学技术大学</b>的博士生，预计 <b>2029</b> 年毕业。主要研究方向是<b>大模型后训练 (LLM Post-Training)</b>——把基座模型变成真正会推理、能落地的模型的那一套技术，包括<b>监督微调 (SFT)</b>、<b>强化学习 (RL)</b> 和<b>在线蒸馏 (OPD)</b>。我关心的始终是两件事：后训练怎么做得<b>更高效、更有依据</b>，模型怎么<b>更会科学推理</b>——最好两全其美。",
     "about.p2": "<b>SFT / PEFT 这边</b>：第一作者发表了 GoRA (NeurIPS 2025)，用训练中的梯度信息同时决定秩的大小和初始化方式，数学推理上比标准 LoRA 高出 5 分以上；又做了 LoRAFactory 统一研究，给 LoRA 变体补上了第一套系统的分类、代码库和大规模评测；MoE²-LoRA 和 Parametric Skills 是共同一作兼项目负责人，GIDA、E²LoRA 也有参与（两篇都被 ICLR 2026 接收）。",
     "about.p3": "<b>RL 和蒸馏这边</b>：参与了 P1 和 P1-VL——首批在 IPhO 2025 拿到金牌表现的开源模型，也做了 PHYSICS 数据集和 Control-R；第一作者发表了 SimpleOPD，一种不用对齐分词器的在线蒸馏方法，把 Intern-S2-Preview 在 ProofBench 上抬高了 21.2 分，超过 Gemini-2.5-Pro；还参与了 Agents-A1（35B 参数、性能比肩万亿参数模型）和 ExoMind（受延展心智启发的科学智能体系统，八项科学基准全面超过闭源模型）。这些开源模型在 Hugging Face 上累计被下载了 <b>45 万+ 次</b>。",
-    "research.title": "研究方向",
+    "research.title": "研究方向与亮点",
     "research.c1t": "高效 SFT 与 PEFT", "research.c1d": "用一小部分训练成本达到接近全量微调的效果：GoRA、E²LoRA、MoE²-LoRA、GIDA、Parametric Skills，以及 LoRAFactory 统一研究。",
     "research.c2t": "科学推理强化学习", "research.c2d": "用强化学习把物理奥赛能力做到金牌级，再泛化到更广的 STEM 推理：P1、P1-VL、PHYSICS。",
     "research.c3t": "在线蒸馏 (OPD)", "research.c3d": "把长上下文教师的推理能力蒸馏到小模型里，不用对齐分词器、不受模型家族限制：SimpleOPD、Agents-A1。",
     "research.c4t": "AI for Science", "research.c4d": "面向科学场景的数据集和评测体系：Biology-Instructions、PHYSICS、物理奥赛基准等。",
-    "hl.title": "研究亮点",
     "pub.title": "论文发表",
     "pub.fAll": "全部", "pub.fPeft": "SFT 与 PEFT", "pub.fRl": "RL 与蒸馏", "pub.fBench": "数据集与基准",
     "contact.title": "联系我",
@@ -467,6 +465,10 @@ const HIGHLIGHTS = [
   {
     icon: "⚡", cat: "peft",
     title: { en: "Efficient SFT & PEFT", zh: "高效 SFT 与 PEFT" },
+    desc: {
+      en: "Principled, parameter-efficient fine-tuning that matches full fine-tuning at a fraction of the cost.",
+      zh: "用一小部分训练成本达到接近全量微调的效果。",
+    },
     items: [
       { name: "GoRA", href: "https://arxiv.org/abs/2502.12171",
         en: "First-author (NeurIPS 2025) · +5.13 on math reasoning, beats full fine-tuning at high ranks",
@@ -488,6 +490,10 @@ const HIGHLIGHTS = [
   {
     icon: "🧠", cat: "rl",
     title: { en: "RL for Scientific Reasoning", zh: "科学推理强化学习" },
+    desc: {
+      en: "Reinforcement-learning pipelines that reach gold-medal-level physics performance and generalize to broader STEM reasoning.",
+      zh: "用强化学习把物理奥赛能力做到金牌级，再泛化到更广的 STEM 推理。",
+    },
     items: [
       { name: "P1", href: "https://arxiv.org/abs/2511.13612",
         en: "First open-source gold medal at IPhO 2025 · 12 golds out of 13 competitions",
@@ -506,6 +512,10 @@ const HIGHLIGHTS = [
   {
     icon: "🔁", cat: "rl",
     title: { en: "On-Policy Distillation", zh: "在线蒸馏 (OPD)" },
+    desc: {
+      en: "Distilling long-context teacher reasoning into compact students, across tokenizers and model families.",
+      zh: "把长上下文教师的推理能力蒸馏到小模型里，不用对齐分词器、不受模型家族限制。",
+    },
     items: [
       { name: "SimpleOPD", href: "https://arxiv.org/abs/2608.14277",
         en: "First-author · +21.2 on ProofBench, surpassing Gemini-2.5-Pro (Intern-S2-Preview)",
@@ -518,6 +528,10 @@ const HIGHLIGHTS = [
   {
     icon: "🧬", cat: "bench",
     title: { en: "Datasets & AI for Science", zh: "数据集与 AI for Science" },
+    desc: {
+      en: "Datasets and benchmarks that power post-training for science.",
+      zh: "面向科学场景的数据集和评测体系。",
+    },
     items: [
       { name: "ExoMind", href: "https://github.com/AI4SGI/ExoMind",
         en: "8-benchmark average 36.2 → 67.5, beating Claude / GPT / Gemini / DeepSeek with a 35B model",
@@ -544,6 +558,7 @@ function renderHighlights() {
       '<div class="hl-num">' + String(gi + 1).padStart(2, "0") + "</div>" +
       '<div class="hl-head"><span class="hl-icon">' + g.icon + "</span><h3>" + g.title[lang] + "</h3>" +
         '<span class="hl-toggle">' + g.items.length + " · " + (lang === "zh" ? "展开" : "Open") + " ▾</span></div>" +
+      '<p class="hl-desc">' + (g.desc ? g.desc[lang] : "") + "</p>" +
       '<div class="hl-list"><div class="hl-list-inner"><ul>' +
         g.items.map((it) =>
           '<li><a href="' + it.href + '" target="_blank" rel="noopener"><b>' + it.name + "</b> — " +
