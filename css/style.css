@@ -696,7 +696,6 @@ body {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
   align-self: start;
   width: 100%;
   background: linear-gradient(135deg, #eef2ff, #f5faff);
@@ -972,7 +971,6 @@ a.contact-item:hover {
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
   .pub { grid-template-columns: 1fr; }
-  .pub-fig { min-height: 0; aspect-ratio: 16 / 9; }
   .menu-btn { display: flex; }
   .nav-links {
     position: fixed;

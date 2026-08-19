@@ -515,6 +515,27 @@ const FIG_MAP = {
   "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": "Maize.jpg",
 };
 
+/* aspect ratio of each figure, so cards never crop the image */
+const FIG_RATIO = {
+  "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning": 1.76,
+  "GoRA: Gradient-driven Adaptive Low Rank Adaptation": 1.98,
+  "Biology-Instructions: A Dataset and Benchmark for Multi-Omics Sequence Understanding Capability of Large Language Models": 3.29,
+  "A Unified Study of LoRA Variants: Taxonomy, Review, Codebase, and Empirical Evaluation": 2.12,
+  "SuperCLUE: A Comprehensive Chinese Large Language Model Benchmark": 4.67,
+  "Scaling Physical Reasoning with the PHYSICS Dataset": 3.06,
+  "P1: Mastering Physics Olympiads with Reinforcement Learning": 2.52,
+  "P1-VL: Bridging Visual Perception and Scientific Reasoning in Physics Olympiads": 2.35,
+  "Gradient Intrinsic Dimensionality Alignment: Narrowing the Gap Between Low-Rank Adaptation and Full Fine-Tuning": 1.69,
+  "E²LoRA: Efficient and Effective Low-Rank Adaptation with Entropy-Guided Adaptive Sharing": 1.55,
+  "A Comprehensive Survey of LLM-Driven Collective Intelligence: Past, Present, and Future": 1.31,
+  "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent": 1.79,
+  "Control-R: Towards Controllable Test-Time Scaling": 1.0,
+  "MoE²-LoRA: When MoE Models Meet MoE-style Low-Rank Adaptation": 2.22,
+  "ExoMind: Democratizing Scientific Intelligence via Extended-Mind-Inspired Agentic System": 2.51,
+  "Parametric Skills": 2.45,
+  "Clarifying Maize Knowledge Graph Question Answering Method Based on Large Language Model": 2.71,
+};
+
 /* ---------------- Hugging Face download stats ---------------- */
 const HF_MODELS = {
   "P1: Mastering Physics Olympiads with Reinforcement Learning": [
@@ -674,7 +695,7 @@ function renderPubs(filter) {
         (p.hl[lang] || []).map((x) => "<li>" + x + "</li>").join("") + "</ul></details>"
       : "";
     const fig = FIG_MAP[p.title]
-      ? '<div class="pub-fig"><img src="img/papers/' + FIG_MAP[p.title] +
+      ? '<div class="pub-fig" style="aspect-ratio:' + (FIG_RATIO[p.title] || 1.6) + '"><img src="img/papers/' + FIG_MAP[p.title] +
         '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\')"><span class="fig-zoom-hint">🔍 ' +
         (lang === "zh" ? "点击放大" : "Click to zoom") + '</span></div>'
       : "";
