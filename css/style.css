@@ -501,19 +501,27 @@ body {
   text-decoration: none;
   white-space: nowrap;
   pointer-events: auto;
-  animation: floatY 4.6s ease-in-out infinite;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: floatXY1 6s ease-in-out infinite;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.fn-badge:nth-child(2) { animation-delay: -1.6s; }
-.fn-badge:nth-child(3) { animation-delay: -3.1s; }
+.fn-badge:nth-child(2) { animation-name: floatXY2; animation-delay: -2s; }
+.fn-badge:nth-child(3) { animation-name: floatXY3; animation-delay: -4s; }
 .fn-badge:hover {
   border-color: rgba(99, 102, 241, 0.5);
   box-shadow: 0 12px 34px rgba(99, 102, 241, 0.22);
 }
 .fn-fire { font-size: 0.95rem; }
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+@keyframes floatXY1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(26px, -16px); }
+}
+@keyframes floatXY2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-28px, -12px); }
+}
+@keyframes floatXY3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(22px, -18px); }
 }
 
 .scroll-hint {
