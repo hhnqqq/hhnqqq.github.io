@@ -815,16 +815,27 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 (function spotlight() {
   const spot = document.getElementById("spotlight");
   if (!spot || !window.matchMedia("(pointer: fine)").matches) return;
+  // .spotlight is placed at left/top:-260px so its CENTER sits at the origin;
+  // translate(cx, cy) moves that center exactly onto the cursor.
   let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
   let cx = tx, cy = ty;
+  let visible = false;
   document.addEventListener("mousemove", (e) => {
     tx = e.clientX; ty = e.clientY;
-    spot.style.opacity = "1";
+    if (!visible) {
+      cx = tx; cy = ty;          // snap onto the cursor on first move
+      spot.style.opacity = "1";
+      visible = true;
+    }
   }, { passive: true });
+  document.addEventListener("mouseleave", () => {
+    spot.style.opacity = "0";
+    visible = false;
+  });
   (function follow() {
-    cx += (tx - cx) * 0.08;
-    cy += (ty - cy) * 0.08;
-    spot.style.transform = "translate(" + (cx - spot.offsetWidth / 2) + "px," + (cy - spot.offsetHeight / 2) + "px)";
+    cx += (tx - cx) * 0.25;      // tight follow, minimal lag
+    cy += (ty - cy) * 0.25;
+    spot.style.transform = "translate(" + cx + "px," + cy + "px)";
     requestAnimationFrame(follow);
   })();
 })();
