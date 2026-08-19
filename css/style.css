@@ -531,6 +531,7 @@ body {
   background: linear-gradient(90deg, rgba(99,102,241,0.45), rgba(236,72,153,0.15), transparent);
 }
 
+#about .section-body { padding-left: 8%; }
 .section-body p { color: var(--text-dim); font-size: 1.03rem; max-width: 860px; margin-bottom: 16px; }
 .section-body b { font-weight: 700; }
 .section-body p b {
