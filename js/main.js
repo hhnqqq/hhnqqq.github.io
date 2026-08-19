@@ -542,15 +542,25 @@ function renderHighlights() {
   grid.innerHTML = HIGHLIGHTS.map((g, gi) =>
     '<div class="hl-card hl-card-' + g.cat + '">' +
       '<div class="hl-num">' + String(gi + 1).padStart(2, "0") + "</div>" +
-      '<div class="hl-head"><span class="hl-icon">' + g.icon + "</span><h3>" + g.title[lang] + "</h3></div>" +
-      '<ul class="hl-list">' +
+      '<div class="hl-head"><span class="hl-icon">' + g.icon + "</span><h3>" + g.title[lang] + "</h3>" +
+        '<span class="hl-toggle">' + g.items.length + " · " + (lang === "zh" ? "展开" : "Open") + " ▾</span></div>" +
+      '<div class="hl-list"><div class="hl-list-inner"><ul>' +
         g.items.map((it) =>
           '<li><a href="' + it.href + '" target="_blank" rel="noopener"><b>' + it.name + "</b> — " +
           it[lang] + "</a></li>"
         ).join("") +
-      "</ul>" +
+      "</ul></div></div>" +
     "</div>"
   ).join("");
+  if (!grid.dataset.bound) {
+    grid.dataset.bound = "1";
+    grid.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (link) return; // let links navigate
+      const card = e.target.closest(".hl-card");
+      if (card) card.classList.toggle("open");
+    });
+  }
 }
 
 const SCHOLAR_CITES = {
