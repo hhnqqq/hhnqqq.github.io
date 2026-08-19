@@ -696,9 +696,8 @@ function renderPubs(filter) {
       : "";
     const fig = FIG_MAP[p.title]
       ? '<div class="pub-fig" style="aspect-ratio:' + (FIG_RATIO[p.title] || 1.6) + '"><img src="img/papers/' + FIG_MAP[p.title] +
-        '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\')"' +
-         +
-        '><span class="fig-zoom-hint">🔍 ' +
+        '" alt="' + p.title + '" decoding="async" onload="this.classList.add(\'loaded\');var w=this.parentElement.clientWidth,r=this.naturalWidth/this.naturalHeight;this.style.objectFit=(w/r<260)?\'contain\':\'cover\';">' +
+        '<span class="fig-zoom-hint">🔍 ' +
         (lang === "zh" ? "点击放大" : "Click to zoom") + '</span></div>'
       : "";
     const el = document.createElement("article");
