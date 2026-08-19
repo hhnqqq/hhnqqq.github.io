@@ -37,7 +37,7 @@ const I18N = {
     "contact.uni": "USTC", "contact.uniD": "Hefei, Anhui, China",
     "footer.line": "© {y} Haonan He. Built with ❤ — powered by GitHub Pages.",
     "footer.sub": "Last updated: Aug 2026 · Citation data from Google Scholar",
-    links: { paper: "Paper", code: "Code", project: "Project", bib: "BibTeX" },
+    links: { paper: "Paper", code: "Code", project: "Project", bib: "BibTeX", openreview: "OpenReview" },
     roleBadges: { first: "First Author", cofirst: "Co-First Author", lead: "Project Lead" },
     hlLabel: "Key Highlights",
   },
@@ -72,7 +72,7 @@ const I18N = {
     "contact.uni": "中国科学技术大学", "contact.uniD": "安徽 · 合肥",
     "footer.line": "© {y} Haonan He. 用心写代码，GitHub Pages 托管。",
     "footer.sub": "最近更新: 2026-08 · 引用数据来自 Google Scholar",
-    links: { paper: "论文", code: "代码", project: "项目", bib: "BibTeX" },
+    links: { paper: "论文", code: "代码", project: "项目", bib: "BibTeX", openreview: "OpenReview" },
     roleBadges: { first: "一作", cofirst: "共一", lead: "项目负责人" },
     hlLabel: "核心亮点",
   },
@@ -177,16 +177,16 @@ const PAPERS = [
     authors: ["J. Ye", "H. He", "M. Li", "F. Han", "T. Chen", "P. Ye"],
     venue: "ICLR 2026", venueClass: "iclr", year: 2026, cites: 2, roles: ["cofirst"],
     cat: "peft",
-    links: [],
-    note: { en: "Co-first · Aligns gradient intrinsic dimensionality to close the LoRA ↔ full fine-tuning gap.", zh: "共一 · 通过梯度本征维度对齐，缩小 LoRA 与全量微调之间的差距。" },
+    links: [{ type: "openreview", href: "https://openreview.net/forum?id=kObvnQ6pUx" }],
+    note: { en: "Co-first · RaLoRA: aligns gradient intrinsic dimensionality to close the LoRA ↔ full fine-tuning gap.", zh: "共一 · RaLoRA：通过梯度本征维度对齐，缩小 LoRA 与全量微调之间的差距。" },
     hl: {
       en: [
-        "Co-first author (ICLR 2026)",
+        "Co-first author · method named RaLoRA (ICLR 2026)",
         "Aligns gradient intrinsic dimensionality between LoRA updates and full fine-tuning",
         "Narrows the performance gap between low-rank adaptation and full fine-tuning",
       ],
       zh: [
-        "共同一作（ICLR 2026）",
+        "共同一作 · 方法名为 RaLoRA（ICLR 2026）",
         "把 LoRA 更新和全量微调的梯度本征维度对齐",
         "明显缩小低秩适配和全量微调之间的性能差距",
       ],
@@ -221,7 +221,7 @@ const PAPERS = [
     authors: ["X. Zhao", "H. He", "Q. Yang", "M. Li", "J. Ye", "Z. Tan", "B. Wan", "P. Ye"],
     venue: "CBW@COLM 2026", venueClass: "arxiv", year: 2026, cites: 0, roles: ["cofirst", "lead"],
     cat: "peft",
-    links: [],
+    links: [{ type: "arxiv", href: "https://arxiv.org/abs/2606.30015" }],
     note: { en: "Co-first & project lead · Modular, reusable parametric skills for continual adaptation.", zh: "共一兼项目负责人 · 把技能做成可复用的参数模块，支持持续适配。" },
     hl: {
       en: [
@@ -331,7 +331,7 @@ const PAPERS = [
     authors: ["M. Li", "P. Ye", "J. Ye", "H. He", "T. Chen"],
     venue: "ICLR 2026", venueClass: "iclr", year: 2026, cites: 2, roles: [],
     cat: "peft",
-    links: [],
+    links: [{ type: "openreview", href: "https://openreview.net/forum?id=IQttyo0460" }],
     note: { en: "Entropy-guided adaptive sharing of low-rank parameters for efficient & effective adaptation.", zh: "基于熵引导的自适应参数共享，实现高效且有效的低秩适配。" },
     hl: {
       en: [
@@ -479,7 +479,7 @@ const HIGHLIGHTS = [
       { name: "MoE²-LoRA", href: "https://arxiv.org/abs/2607.21978",
         en: "Co-first & lead · first MoE-style LoRA for MoE models, SOTA downstream accuracy",
         zh: "共一兼负责人 · 首个给 MoE 模型做 MoE 风格低秩适配，SOTA 下游精度" },
-      { name: "GIDA · E²LoRA", href: "https://openreview.net/search?term=Gradient+Intrinsic+Dimensionality",
+      { name: "GIDA · E²LoRA", href: "https://openreview.net/forum?id=kObvnQ6pUx",
         en: "ICLR 2026 · closing the gap between LoRA and full fine-tuning",
         zh: "ICLR 2026 · 缩小 LoRA 与全量微调的差距" },
       { name: "Parametric Skills", href: "https://arxiv.org/abs/2606.30015",
