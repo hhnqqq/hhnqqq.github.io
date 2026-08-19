@@ -566,14 +566,16 @@ function renderPubs(filter) {
         (p.hl[lang] || []).map((x) => "<li>" + x + "</li>").join("") + "</ul></details>"
       : "";
     const fig = FIG_MAP[p.title]
-      ? '<div class="pub-fig"><div class="pub-fig-inner"><img src="img/papers/' + FIG_MAP[p.title] +
-        '" alt="' + p.title + '" loading="lazy"></div></div>'
+      ? '<div class="pub-fig"><img src="img/papers/' + FIG_MAP[p.title] +
+        '" alt="' + p.title + '" loading="lazy"></div>'
       : "";
     const el = document.createElement("article");
     el.className = "pub";
     el.dataset.cat = p.cat;
     el.style.animationDelay = (idx * 0.05) + "s";
     el.innerHTML =
+      fig +
+      '<div class="pub-body">' +
         '<div class="pub-head">' +
           '<span class="pub-title">' + p.title + '</span>' +
           '<span class="pub-venue ' + p.venueClass + '">' + p.venue + " · " + p.year + '</span>' +
@@ -581,10 +583,10 @@ function renderPubs(filter) {
           '<span class="pub-cites">' + p.cites + ' ⭐</span>' +
         '</div>' +
         '<div class="pub-authors">' + authors + '</div>' +
-        fig +
         '<div class="pub-note">' + p.note[lang] + '</div>' +
         hl +
-        '<div class="pub-links">' + links.join("") + '</div>';
+        '<div class="pub-links">' + links.join("") + '</div>' +
+      '</div>';
     list.appendChild(el);
   });
 }
