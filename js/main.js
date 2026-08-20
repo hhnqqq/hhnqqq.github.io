@@ -688,19 +688,26 @@ const HF_MODELS = {
     "https://huggingface.co/api/models/",
     "https://hf-mirror.com/api/models/",
   ];
+  // hard-coded fallback (Aug 2026) — shown when the API is unreachable
+  const HF_DEFAULTS = {
+    "PRIME-RL/P1-235B-A22B": 22, "PRIME-RL/P1-30B-A3B": 24,
+    "PRIME-RL/P1-VL-235B-A22B": 31, "PRIME-RL/P1-VL-30B-A3B": 34,
+    "InternScience/Agents-A1": 17071, "InternScience/Agents-A1-4B": 242715,
+    "InternScience/Agents-A1-Q4_K_M-GGUF": 15959, "InternScience/Agents-A1-4B-Q4_K_M-GGUF": 73722,
+    "InternScience/Agents-A1-FP8": 8151, "InternScience/Agents-A1-F16-GGUF": 421,
+    "InternScience/Agents-A1-Q8_0-GGUF": 4561, "InternScience/Agents-A1-4B-F16-GGUF": 2195,
+    "InternScience/Agents-A1-4B-Q8_0-GGUF": 90723,
+    "bingyang-lei/Qwen3.5-35B-A3B-SimpleOPD": 17, "bingyang-lei/Intern-S2-Preview-SimpleOPD": 19,
+    "AI4SGI/ExoMind": 7, "AI4SGI/ExoMind-9B": 9,
+  };
 
-  let totals = {};
-  let loaded = false;
-  let anyFailed = false;
+  let totals = { ...HF_DEFAULTS }; // start from hard-coded values
+  let fresh = false;
 
   function render() {
     const sum = Object.values(totals).reduce((a, b) => a + b, 0);
     const heroEl = document.getElementById("hfDownloads");
-    if (heroEl) {
-      heroEl.textContent = !loaded ? "…"
-        : (!Object.keys(totals).length && anyFailed) ? "—"
-        : fmtNum(sum);
-    }
+    if (heroEl) heroEl.textContent = fmtNum(sum);
     for (const [title, mids] of Object.entries(HF_MODELS)) {
       const sub = mids.reduce((a, id) => a + (totals[id] || 0), 0);
       const card = [...document.querySelectorAll(".pub")].find((el) =>
@@ -712,17 +719,17 @@ const HF_MODELS = {
       badge.href = "https://huggingface.co/" + mids[0];
       badge.target = "_blank";
       badge.rel = "noopener";
-      badge.textContent = "🤗 " + (loaded ? (anyFailed && !sub ? "—" : fmtNum(sub)) : "…");
+      badge.textContent = "🤗 " + fmtNum(sub);
       card.querySelector(".pub-head").appendChild(badge);
     }
   }
 
-  // cached totals first
+  // cached fresh values beat the hard-coded ones
   try {
     const c = JSON.parse(localStorage.getItem(CACHE_KEY));
     if (c && Date.now() - c.ts < CACHE_TTL && c.data && Object.keys(c.data).length) {
-      totals = c.data;
-      loaded = true;
+      totals = { ...c.data };
+      fresh = true;
       render();
     }
   } catch (e) {}
@@ -738,13 +745,10 @@ const HF_MODELS = {
         return;
       } catch (e) { /* try next mirror */ }
     }
-    anyFailed = true;
   };
   Promise.allSettled(ids.map(fetchOne)).then(() => {
-    loaded = true;
-    if (Object.keys(totals).length) {
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: totals })); } catch (e) {}
-    }
+    fresh = true;
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: totals })); } catch (e) {}
     render();
   });
 })();
