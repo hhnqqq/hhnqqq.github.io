@@ -8,6 +8,7 @@
 const I18N = {
   en: {
     "hero.welcome": "👋 Welcome to my homepage", "hero.subline": "Specializing in LLM post-training: SFT · RL · On-Policy Distillation",
+    "nav.minimal": "Minimal", "nav.exitMinimal": "Full UI",
     "nav.about": "About", "nav.research": "Research", "nav.publications": "Publications", "nav.contact": "Contact",
     "hero.affil": "University of Science and Technology of China",
     "hero.phd": "PhD Student (2023–2029)",
@@ -46,6 +47,7 @@ const I18N = {
   },
   zh: {
     "hero.welcome": "👋 欢迎来到我的主页", "hero.subline": "专注于大模型后训练：SFT · RL · 在线蒸馏",
+    "nav.minimal": "极简", "nav.exitMinimal": "完整版",
     "nav.about": "关于我", "nav.research": "研究方向", "nav.publications": "论文发表", "nav.contact": "联系",
     "hero.affil": "中国科学技术大学",
     "hero.phd": "博士在读（2023–2029）",
@@ -774,6 +776,8 @@ function applyLang() {
   renderHighlights();
   initFloatNews();
   restartTyping();
+  const mt = document.getElementById("minimalToggle");
+  if (mt) mt.textContent = I18N[lang][document.body.classList.contains("minimal") ? "nav.exitMinimal" : "nav.minimal"];
 }
 
 document.querySelector("#langToggle").addEventListener("click", () => {
@@ -781,6 +785,24 @@ document.querySelector("#langToggle").addEventListener("click", () => {
   localStorage.setItem("hh-lang", lang);
   applyLang();
 });
+
+/* minimal mode */
+(function minimalMode() {
+  const btn = document.getElementById("minimalToggle");
+  if (!btn) return;
+  const apply = () => {
+    const on = document.body.classList.contains("minimal");
+    btn.textContent = I18N[lang][on ? "nav.exitMinimal" : "nav.minimal"];
+  };
+  if (localStorage.getItem("hh-min") === "1") document.body.classList.add("minimal");
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("minimal");
+    localStorage.setItem("hh-min", document.body.classList.contains("minimal") ? "1" : "0");
+    apply();
+  });
+  window.addEventListener("languagechange", apply);
+  apply();
+})();
 
 /* ---------------- typing effect ---------------- */
 let typeTimer = null;
