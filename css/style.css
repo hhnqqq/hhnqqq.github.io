@@ -1243,9 +1243,12 @@ body.minimal .pub-list { gap: 0; counter-reset: pub; }
 body.minimal .pub::before {
   counter-increment: pub;
   content: "[" counter(pub) "]";
+  position: static;
+  opacity: 1;
   font-weight: 700;
   color: #111;
   margin-right: 8px;
+  height: auto;
 }
 body.minimal .pub {
   display: flex;
@@ -1263,6 +1266,7 @@ body.minimal .pub {
 }
 body.minimal .pub:last-child { border-bottom: none; }
 body.minimal .pub[data-cat] { border-left: none; }
+body.minimal .pub-body,
 body.minimal .pub-head { display: contents; }
 body.minimal .pub-title {
   font-size: 0.92rem;
