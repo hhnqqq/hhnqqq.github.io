@@ -683,14 +683,24 @@ const HF_MODELS = {
     n >= 1e6 ? (n / 1e6).toFixed(1) + "M"
     : n >= 1e3 ? Math.round(n / 1e3) + "K"
     : String(n);
+  // mirror fallback for mainland-China networks
+  const API_BASES = [
+    "https://huggingface.co/api/models/",
+    "https://hf-mirror.com/api/models/",
+  ];
 
   let totals = {};
   let loaded = false;
+  let anyFailed = false;
 
   function render() {
     const sum = Object.values(totals).reduce((a, b) => a + b, 0);
     const heroEl = document.getElementById("hfDownloads");
-    if (heroEl) heroEl.textContent = loaded ? fmtNum(sum) : "…";
+    if (heroEl) {
+      heroEl.textContent = !loaded ? "…"
+        : (!Object.keys(totals).length && anyFailed) ? "—"
+        : fmtNum(sum);
+    }
     for (const [title, mids] of Object.entries(HF_MODELS)) {
       const sub = mids.reduce((a, id) => a + (totals[id] || 0), 0);
       const card = [...document.querySelectorAll(".pub")].find((el) =>
@@ -702,7 +712,7 @@ const HF_MODELS = {
       badge.href = "https://huggingface.co/" + mids[0];
       badge.target = "_blank";
       badge.rel = "noopener";
-      badge.textContent = "🤗 " + (loaded ? fmtNum(sub) : "…");
+      badge.textContent = "🤗 " + (loaded ? (anyFailed && !sub ? "—" : fmtNum(sub)) : "…");
       card.querySelector(".pub-head").appendChild(badge);
     }
   }
@@ -710,22 +720,31 @@ const HF_MODELS = {
   // cached totals first
   try {
     const c = JSON.parse(localStorage.getItem(CACHE_KEY));
-    if (c && Date.now() - c.ts < CACHE_TTL && c.data) {
+    if (c && Date.now() - c.ts < CACHE_TTL && c.data && Object.keys(c.data).length) {
       totals = c.data;
+      loaded = true;
       render();
     }
   } catch (e) {}
 
   const ids = [...new Set(Object.values(HF_MODELS).flat())];
-  Promise.allSettled(
-    ids.map((id) =>
-      fetch("https://huggingface.co/api/models/" + id, { signal: AbortSignal.timeout(8000) })
-        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-        .then((j) => { totals[id] = j.downloads || 0; })
-    )
-  ).then(() => {
+  const fetchOne = async (id) => {
+    for (const base of API_BASES) {
+      try {
+        const r = await fetch(base + id, { signal: AbortSignal.timeout(6000) });
+        if (!r.ok) continue;
+        const j = await r.json();
+        totals[id] = j.downloads || 0;
+        return;
+      } catch (e) { /* try next mirror */ }
+    }
+    anyFailed = true;
+  };
+  Promise.allSettled(ids.map(fetchOne)).then(() => {
     loaded = true;
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: totals })); } catch (e) {}
+    if (Object.keys(totals).length) {
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: totals })); } catch (e) {}
+    }
     render();
   });
 })();
@@ -1035,19 +1054,27 @@ navLinks.querySelectorAll("a").forEach((a) =>
   a.addEventListener("click", () => { menuBtn.classList.remove("open"); navLinks.classList.remove("open"); })
 );
 
-const reveal = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (e.isIntersecting) {
-      e.target.classList.add("visible");
-      reveal.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
+const revealTargets = document.querySelectorAll(".section, .stat-card, .hl-card, .card, .contact-item");
 
-document.querySelectorAll(".section, .stat-card, .hl-card, .card, .contact-item").forEach((el) => {
-  el.classList.add("reveal");
-  reveal.observe(el);
-});
+if (!("IntersectionObserver" in window)) {
+  // browsers without IO (old WebViews): show everything immediately
+  revealTargets.forEach((el) => el.classList.add("visible"));
+} else {
+  const reveal = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        reveal.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach((el) => {
+    el.classList.add("reveal");
+    reveal.observe(el);
+  });
+  // safety net: never leave content hidden (some mobile browsers never fire IO)
+  setTimeout(() => revealTargets.forEach((el) => el.classList.add("visible")), 2500);
+}
 
 /* 3D tilt on highlight cards */
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1105,6 +1132,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
 /* active-section highlighted nav link */
 (function navSpy() {
+  if (!("IntersectionObserver" in window)) return; // old webviews
   const links = document.querySelectorAll(".nav-links a");
   const secs = [...document.querySelectorAll(".section")];
   const io = new IntersectionObserver((entries) => {

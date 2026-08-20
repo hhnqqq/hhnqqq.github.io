@@ -750,6 +750,14 @@ body {
 
 .pub-list { display: flex; flex-direction: column; gap: 18px; }
 
+.pub-loading {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 40px 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
 .pub {
   display: grid;
   grid-template-columns: 1fr 1fr;
