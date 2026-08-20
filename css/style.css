@@ -1238,24 +1238,37 @@ body.minimal .hl-list a { color: #333; font-size: 0.82rem; }
 body.minimal .hl-list b { color: #111; font-weight: 700; }
 body.minimal .hl-list li::before { background: #111; width: 4px; height: 4px; }
 
-/* publications: dense rows */
-body.minimal .pub-list { gap: 0; }
+/* publications: reference/citation style */
+body.minimal .pub-list { gap: 0; counter-reset: pub; }
+body.minimal .pub::before {
+  counter-increment: pub;
+  content: "[" counter(pub) "]";
+  font-weight: 700;
+  color: #111;
+  margin-right: 8px;
+}
 body.minimal .pub {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
   background: none;
   border: none;
   border-bottom: 1px dashed #ddd;
   border-radius: 0;
-  padding: 8px 0;
-  gap: 2px;
+  padding: 7px 0;
+  gap: 2px 6px;
   opacity: 1 !important;
   transform: none !important;
 }
 body.minimal .pub:last-child { border-bottom: none; }
 body.minimal .pub[data-cat] { border-left: none; }
-body.minimal .pub-head { gap: 6px; }
-body.minimal .pub-title { font-size: 0.92rem; }
+body.minimal .pub-head { display: contents; }
+body.minimal .pub-title {
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 600;
+}
 body.minimal .pub-venue,
 body.minimal .badge-fa,
 body.minimal .badge-cofirst,
@@ -1266,10 +1279,12 @@ body.minimal .hf-badge {
   color: #555;
   padding: 0;
   font-size: 0.82em;
+  font-family: inherit;
 }
-body.minimal .pub-cites { color: #333; font-size: 0.8rem; }
-body.minimal .pub-authors { font-size: 0.8rem; color: #444; }
-body.minimal .pub-links { margin-top: 2px; }
+body.minimal .pub-cites { color: #333; font-size: 0.8rem; margin-left: 0; }
+body.minimal .pub-authors { font-size: 0.82rem; color: #444; order: 10; width: 100%; }
+body.minimal .pub-authors .me { color: #111; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+body.minimal .pub-links { margin-top: 0; order: 11; }
 body.minimal .pub-links a {
   border: none;
   padding: 0;
