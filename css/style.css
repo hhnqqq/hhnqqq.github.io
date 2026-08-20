@@ -980,9 +980,9 @@ a.contact-item:hover {
   bottom: 18px;
   z-index: 150;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 9px;
+  flex-direction: row;
+  gap: 7px;
+  padding: 8px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(15, 23, 42, 0.1);

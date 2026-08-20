@@ -920,7 +920,7 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
   }
 
   let w, h, raf = null;
-  let mode = localStorage.getItem("hh-bg") || "particles";
+  let mode = localStorage.getItem("hh-bg") || "rain";
   const isMobile = window.innerWidth < 768 || (navigator.deviceMemory && navigator.deviceMemory < 4);
   if (isMobile) mode = "off"; // save memory/CPU on phones by default
   const ptColors = ["99,102,241", "6,182,212", "236,72,153"];
@@ -1050,8 +1050,117 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
     }
   }
 
-  const frames = { particles: frameParticles, rain: frameRain, snow: frameSnow };
+  /* ---- meteor (shooting stars) ---- */
+  let meteors = [];
+  function frameMeteor() {
+    ctx.clearRect(0, 0, w, h);
+    if (Math.random() < 0.012 && meteors.length < 8) {
+      const ang = (Math.PI / 5) + Math.random() * (Math.PI / 4);
+      const speed = (6 + Math.random() * 5) * devicePixelRatio;
+      meteors.push({
+        x: Math.random() * w,
+        y: Math.random() * h * 0.35,
+        vx: Math.cos(ang) * speed,
+        vy: Math.sin(ang) * speed,
+        len: (90 + Math.random() * 90) * devicePixelRatio,
+        life: 1,
+      });
+    }
+    for (let i = meteors.length - 1; i >= 0; i--) {
+      const m = meteors[i];
+      m.x += m.vx; m.y += m.vy; m.life -= 0.012;
+      if (m.life <= 0 || m.x > w + 200 || m.y > h + 200) { meteors.splice(i, 1); continue; }
+      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 2, m.y - m.vy * 2);
+      grad.addColorStop(0, "rgba(139, 92, 246," + (0.9 * m.life) + ")");
+      grad.addColorStop(1, "rgba(139, 92, 246,0)");
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 2.2 * devicePixelRatio;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(m.x - m.vx * 3, m.y - m.vy * 3);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, 1.6 * devicePixelRatio, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255," + (0.9 * m.life) + ")";
+      ctx.fill();
+    }
+  }
 
+  /* ---- matrix (falling digits) ---- */
+  let matrixCols = [];
+  function frameMatrix() {
+    ctx.clearRect(0, 0, w, h);
+    const colW = 22 * devicePixelRatio;
+    if (!matrixCols.length) {
+      const n = Math.ceil(w / colW);
+      for (let i = 0; i < n; i++) {
+        matrixCols.push({
+          y: Math.random() * h,
+          speed: (0.6 + Math.random() * 1.2) * devicePixelRatio * 4,
+          chars: "0123456789ABCDEF",
+        });
+      }
+    }
+    ctx.font = (14 * devicePixelRatio) + "px 'JetBrains Mono', monospace";
+    for (let i = 0; i < matrixCols.length; i++) {
+      const c = matrixCols[i];
+      c.y += c.speed;
+      if (c.y > h + 20) { c.y = -20 * devicePixelRatio; c.speed = (0.6 + Math.random() * 1.2) * devicePixelRatio * 4; }
+      const head = c.chars[Math.floor(Math.random() * c.chars.length)];
+      ctx.fillStyle = "rgba(99, 102, 241, 0.85)";
+      ctx.fillText(head, i * colW, c.y);
+      ctx.fillStyle = "rgba(99, 102, 241, 0.3)";
+      for (let k = 1; k < 8; k++) {
+        ctx.fillText(c.chars[Math.floor(Math.random() * c.chars.length)], i * colW, c.y - k * 16 * devicePixelRatio);
+      }
+    }
+  }
+
+  /* ---- bubbles (rising) ---- */
+  let bubbles = [];
+  function frameBubbles() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < 2; i++) {
+      if (bubbles.length < 36) {
+        const r = (3 + Math.random() * 9) * devicePixelRatio;
+        bubbles.push({
+          x: Math.random() * w,
+          y: h + r,
+          r: r,
+          vy: (0.4 + Math.random() * 0.9) * devicePixelRatio,
+          wob: Math.random() * Math.PI * 2,
+          wobSpeed: 0.02 + Math.random() * 0.03,
+          amp: (6 + Math.random() * 14) * devicePixelRatio,
+        });
+      }
+    }
+    for (let i = bubbles.length - 1; i >= 0; i--) {
+      const b = bubbles[i];
+      b.y -= b.vy;
+      b.wob += b.wobSpeed;
+      const x = b.x + Math.sin(b.wob) * b.amp;
+      if (b.y < -b.r * 2) { bubbles.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(x, b.y, b.r, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(99, 102, 241, 0.4)";
+      ctx.lineWidth = 1.4 * devicePixelRatio;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x - b.r * 0.35, b.y - b.r * 0.35, b.r * 0.28, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(236, 72, 153, 0.35)";
+      ctx.fill();
+    }
+  }
+
+  const frames = {
+    particles: frameParticles,
+    rain: frameRain,
+    snow: frameSnow,
+    meteor: frameMeteor,
+    matrix: frameMatrix,
+    bubbles: frameBubbles,
+  };
   function loop() {
     if (frames[mode]) frames[mode]();
     else ctx.clearRect(0, 0, w, h);
@@ -1061,7 +1170,7 @@ document.querySelector("#pubFilters").addEventListener("click", (e) => {
   function applyMode(m, persist) {
     if (m !== "off" && !frames[m]) return;
     mode = m;
-    drops = []; ripples = []; flakes = []; pts = [];
+    drops = []; ripples = []; flakes = []; pts = []; meteors = []; matrixCols = []; bubbles = [];
     if (m === "particles") initParticles();
     if (persist) localStorage.setItem("hh-bg", m);
     document.querySelectorAll(".bg-btn").forEach((b) =>
