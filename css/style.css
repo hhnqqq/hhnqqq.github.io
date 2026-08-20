@@ -1245,6 +1245,7 @@ body.minimal .pub::before {
   content: "[" counter(pub) "]";
   position: static;
   opacity: 1;
+  background: none !important;
   font-weight: 700;
   color: #111;
   margin-right: 8px;
