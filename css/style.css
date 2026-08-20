@@ -1241,12 +1241,16 @@ body.minimal .hl-list li::before { background: #111; width: 4px; height: 4px; }
 /* publications: dense rows */
 body.minimal .pub-list { gap: 0; }
 body.minimal .pub {
+  display: flex;
+  flex-direction: column;
   background: none;
   border: none;
   border-bottom: 1px dashed #ddd;
   border-radius: 0;
   padding: 8px 0;
   gap: 2px;
+  opacity: 1 !important;
+  transform: none !important;
 }
 body.minimal .pub:last-child { border-bottom: none; }
 body.minimal .pub[data-cat] { border-left: none; }
