@@ -1185,13 +1185,35 @@ body.minimal .email-pill {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-body.minimal .stats { display: inline-flex; }
+body.minimal .stats {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 8px auto 0;
+  font-size: 0.88rem;
+}
 body.minimal .stat-card { background: none; border: none; padding: 0 7px; }
 body.minimal .stat-card + .stat-card { border-left: 1px solid #bbb; }
 body.minimal .stat-num { font-size: 0.88rem; font-weight: 600; }
 body.minimal .stat-label { display: inline; font-size: 0.88rem; color: #333; margin-left: 4px; }
-body.minimal .btn { background: none; border: none; padding: 0; color: #111; text-decoration: underline; text-underline-offset: 3px; font-size: 0.88rem; }
+body.minimal .btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.88rem;
+}
 body.minimal .btn svg { display: none; }
+body.minimal .email-pill,
+body.minimal .hero-cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 4px 0 0;
+  font-size: 0.88rem;
+}
 
 /* --- sections: compact CV blocks --- */
 body.minimal .section { padding: 30px 24px 6px; }
